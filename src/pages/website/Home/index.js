@@ -12,6 +12,8 @@ import Footer from '../../../components/Footer';
 
 import render from '../../../assets/images/render.png';
 
+import Notice from '../../../components/Notice';
+
 export default class Home extends React.Component {
     render() {
         return (
@@ -35,16 +37,22 @@ export default class Home extends React.Component {
                     </Container>
                 </div>
 
-                <Container>
-                    <Row>
-                        <Col md="8">
-
-                        </Col>
-                        <Col md="4">
-                            
-                        </Col>
-                    </Row>
-                </Container>
+                <div className="main">
+                    <Container>
+                        <Row>
+                            <Col md="8">
+                                <Notice
+                                    author="Gutyerrez"
+                                    content="<b>Olá</b>, tudo bom?"
+                                    background="https://redesky.com/proxy.php?image=https%3A%2F%2Fi.imgur.com%2Ft0jrKeT.png&hash=159ecfb5a90bea42337daf821dd5ec9f"
+                                />
+                            </Col>
+                            <Col md="4">
+                                
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
 
                 <Footer />
             </>

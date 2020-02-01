@@ -1,3 +1,7 @@
+.main {
+    margin-top: 320px
+}
+
 .message-of-the-day {
     position: absolute;
     background: #212121 url('../../../assets/images/content-background.png') repeat 15% 53%;
