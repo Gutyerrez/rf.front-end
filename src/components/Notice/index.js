@@ -1,31 +1,40 @@
 import React, { Component } from 'react';
-import {
-    Container,
-} from 'reactstrap';
+
+import reactHtmlParser from 'react-html-parser';
 
 import './style.css';
 
 export default class Footer extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
         return (
             <>
-                <div className="notice shadow-sm">
+                <div className="notice">
+                    <a href={`/notices/${this.props.id}`}>
+                        <div className="notice-header" style={{
+                            backgroundImage: `url('${this.props.background}')`
+                        }}>
+                        </div>
+                    </a>
                     <div className="notice-author">
-                        <img src="http://cravatar.eu/helmavatar/Gutyerrez/98.png" />
-                        <span className="username">{this.props.author}</span>
-                        <br/><br/>
-                        <span className="date"><i className="fa fa-calendar"></i> {this.props.date}</span>
+                        <img src="https://cravatar.eu/helmavatar/Gutyerrez/96" />
+                        <span>{this.props.author}</span>
                     </div>
-                    <div className="notice-header" style={{
-                        backgroundImage: this.props.background
-                    }}>
-                        <div className="notice-header-corner"></div>
-                        <div className="notice-header-title">{this.props.title}</div>
+                    <div className="notice-title">
+                        <p>{this.props.title}</p>
+                        <span>{this.props.date}</span>
+                    </div>
+                    <div className="notice-body">
+                        {reactHtmlParser(this.props.content)}
+                        <div className="notice-breaker-section">
+                            <div className="notice-breaker"></div>
+                        </div>
+                    </div>
+                    <div className="notice-footer">
+                        <a href={`/notices/${this.props.id}`}>Continuar lendo...</a>
                     </div>
                 </div>
             </>

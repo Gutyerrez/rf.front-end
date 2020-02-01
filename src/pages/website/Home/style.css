@@ -1,5 +1,5 @@
 .main {
-    margin-top: 320px
+    margin-top: 340px
 }
 
 .message-of-the-day {
@@ -12,28 +12,26 @@
 
 .message-of-the-day .message-of-the-day-body {
     background: transparent;
-    height: 220px;
+    min-height: 190px;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 110px;
     border-top-left-radius: 5rem;
     border-bottom-right-radius: 5rem;
-    border: 1px solid #FFFF
+    border: 1px solid #000;
 }
 
 .message-of-the-day .message-of-the-day-body .message-of-the-day-content {
-    background: orangered;
-    height: 200px;
-    width: 98%;
-    margin-left: 10px;
-    margin-top: 10px;
+    background: #FF4500;
+    min-height: 170px;
+    margin: 10px 10px 10px 10px;
     border-top-left-radius: 4.5rem;
     border-bottom-right-radius: 4.5rem;
-    border: 3px solid rgba(0,0,0,0.2)
+    border: 3px solid rgba(0,0,0,0.2);
 }
 
 .message-of-the-day .message-of-the-day-body .message-of-the-day-content h3 {
     color: #FFF;
-    margin: 40px 0 0 40px;
+    margin: 10px 0 0 40px;
 }
 
 .message-of-the-day .message-of-the-day-body .message-of-the-day-content p {
@@ -46,6 +44,16 @@
     position: absolute;
     margin-top: -270px;
     margin-left: 50%
+}
+
+@media screen and (max-width: 998px) {
+    .message-of-the-day .message-of-the-day-body .message-of-the-day-content h3  {
+        margin-top: 10px
+    }
+
+    .message-of-the-day .message-of-the-day-body .message-of-the-day-content img {
+        display: none;
+    }
 }
 
 .message-of-the-day .message-of-the-day-body .message-of-the-day-content button {

@@ -39,7 +39,7 @@ export default class Header extends Component {
                         <Container>
                             <ul>
                                 <li>
-                                    <i className="fa fa-gamepad"></i> <span>jogar.redefocus.com</span> Clique para copiar o ip
+                                    <i className="fa fa-gamepad"></i> <span>jogar.redefocus.com</span> <p>Clique para copiar o ip</p>
                                 </li>
                                 <li>
                                     <a href="/account/login"><i className="fa fa-user"></i> Minha conta</a>
@@ -61,21 +61,23 @@ export default class Header extends Component {
                     <Navbar>
                         <Container>
                             <Nav>
-                                <NavItem className={(this.props.active === "/" ? 'active' : null)}>
+                                <NavItem className={(this.props.active === "/" && !this.state.dropdownOpen ? 'active' : null)}>
                                     <NavLink tag={Link} to="/">Início</NavLink>
                                 </NavItem>
-                                <NavItem className={(this.props.active === "/shop" ? 'active' : null)}>
+                                <NavItem className={(this.props.active === "/shop" && !this.state.dropdownOpen ? 'active' : null)}>
                                     <NavLink tag={Link} to="/shop">Loja</NavLink>
                                 </NavItem>
-                                <NavItem className={(this.props.active === "/staff" ? 'active' : null)}>
+                                <NavItem className={(this.props.active === "/staff" && !this.state.dropdownOpen ? 'active' : null)}>
                                     <NavLink tag={Link} to="/shop">Equipe</NavLink>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem className={(this.state.dropdownOpen ? 'active' : null)}>
                                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                         <DropdownToggle style={{
                                             background: 'transparent',
                                             border: 'none',
-                                            boxShadow: 'none'
+                                            boxShadow: 'none',
+                                            paddingLeft: '5px',
+                                            textAlign: 'center'
                                         }}>
                                             <NavLink>Mais</NavLink>
                                         </DropdownToggle>

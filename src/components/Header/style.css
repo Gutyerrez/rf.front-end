@@ -2,12 +2,13 @@
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    background-color: rgba(0,0,0,0.08) !important
 }
 
 .login-bar {
     background: #262626;
     border-bottom: 4px solid rgba(0,0,0,0.2);
-    padding: 10px 0
+    padding: 12px 0 0px 0
 }
 
 .login-bar ul {
@@ -26,8 +27,12 @@ body {
     padding: 1px 16px 6px 16px;
     margin: 0 4px;
     border-radius: 25rem;
-    color: orangered;
+    color: #FF4500;
     cursor: pointer
+}
+
+.login-bar ul li:first-child p {
+    display: inline-block
 }
 
 .login-bar ul li:last-child {
@@ -38,6 +43,23 @@ body {
 .login-bar a:hover {
     color: #FFF;
     text-decoration: none;
+}
+
+@media screen and (max-width: 998px) {
+    .login-bar ul li:first-child i {
+        display: none
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .login-bar {
+        height: 55px;
+    }
+    
+    .login-bar ul li:first-child span,
+    .login-bar ul li:first-child p {
+        display: none
+    }    
 }
 
 .presentation {
@@ -67,6 +89,12 @@ body {
     cursor: pointer
 }
 
+@media screen and (max-width: 600px) {
+    .presentation .logo-container {
+        display: none
+    }    
+}
+
 .presentation .cart-item-count {
     background: #262626;
     float: right;
@@ -78,7 +106,7 @@ body {
 
 .presentation .cart-item-count i {
     position: absolute;
-    background: orangered;
+    background: #FF4500;
     color: #FFF;
     height: 43px;
     line-height: 28px;
@@ -92,7 +120,7 @@ body {
 }
 
 .presentation .cart-item-count a {
-    color: orangered;
+    color: #FF4500;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -113,7 +141,13 @@ body {
 
 @media screen and (max-width: 998px) {
     .navbar .nav {
-        margin-left: 55%;
+        margin-left: 42%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar .nav {
+        margin-left: 0;
     }
 }
 
@@ -127,7 +161,7 @@ body {
 }
 
 .navbar .nav-item.active {
-    background: orangered;
+    background: #FF4500;
     border-left: 3px solid rgba(0,0,0,0.2);
     border-right: 3px solid rgba(0,0,0,0.2)
 }
@@ -135,7 +169,7 @@ body {
 .navbar .nav-item.active:after {
     content: "";
     position: absolute;
-    background: orangered;
+    background: #FF4500;
     height: 10px;
     width: 86px;
     margin: -58px 0 0 -43px;
@@ -149,7 +183,7 @@ body {
 .navbar .nav-item.active:before {
     content: "";
     position: absolute;
-    background: orangered;
+    background: #FF4500;
     height: 10px;
     width: 86px;
     margin: 50px 0 0 -43px;
@@ -166,15 +200,21 @@ body {
 }
 
 .dropdown-menu[aria-labelledby="dropdown-more"] {
-    background: #262626;
-    margin-top: 6px;
-    border: none;
+    background: #FF4500;
+    margin: 10px 0 0 -3px;
+    border: 3px solid rgba(0,0,0,0.2);
+}
+
+.dropdown-menu[aria-labelledby="dropdown-more"] ul {
+    padding: 0
 }
 
 .dropdown-menu[aria-labelledby="dropdown-more"] ul li {
     list-style-type: none !important;
+    text-align: center;
+    border-bottom: 3px solid rgba(0,0,0,0.2)
 }
 
-.dropdown-menu[aria-labelledby="dropdown-more"] ul li .nav-link {
-    padding-left: 0; padding-right: 0
+.dropdown-menu[aria-labelledby="dropdown-more"] ul li:last-child {
+    border-bottom: none;
 }
