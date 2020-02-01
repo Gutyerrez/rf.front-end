@@ -42,9 +42,11 @@ export default class Home extends React.Component {
                         <Row>
                             <Col md="8">
                                 <Notice
+                                    title="Testando..."
                                     author="Gutyerrez"
                                     content="<b>Olá</b>, tudo bom?"
                                     background="https://redesky.com/proxy.php?image=https%3A%2F%2Fi.imgur.com%2Ft0jrKeT.png&hash=159ecfb5a90bea42337daf821dd5ec9f"
+                                    date="Hoje às 4:55"
                                 />
                             </Col>
                             <Col md="4">

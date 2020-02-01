@@ -19,12 +19,13 @@ export default class Footer extends Component {
                         <img src="http://cravatar.eu/helmavatar/Gutyerrez/98.png" />
                         <span className="username">{this.props.author}</span>
                         <br/><br/>
-                        <span className="date"><i className="fa fa-calendar"></i> 01/02/2020</span>
+                        <span className="date"><i className="fa fa-calendar"></i> {this.props.date}</span>
                     </div>
                     <div className="notice-header" style={{
                         backgroundImage: this.props.background
                     }}>
                         <div className="notice-header-corner"></div>
+                        <div className="notice-header-title">{this.props.title}</div>
                     </div>
                 </div>
             </>

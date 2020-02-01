@@ -1,9 +1,14 @@
 .notice {
-    background: #262626;
+    background: #eafcff;
     height: 600px;
     width: 100%;
-    border-top-right-radius: 15px;
+    border-radius: 2rem;
+}
 
+.notice .notice-header {
+    background: transparent url('../../assets/images/header-bg.png') no-repeat center center;
+    height: 180px;
+    border-top-left-radius: 30px;
 }
 
 .notice .notice-author {
@@ -13,9 +18,12 @@
     width: 150px;
     margin: -5px 0 0 -5px;
     border-top-left-radius: 25px;
-    border-bottom-right-radius: 25rem;
+    border-bottom-right-radius: 2rem;
     border: 3px solid rgba(0, 0, 0, 0.2);
+    border-right: none;
+    box-shadow: 2px 1px 4px 0 rgb(255, 97, 39);
     text-align: center;
+    z-index: 999
 }
 
 .notice .notice-author img {
@@ -34,12 +42,6 @@
     border-radius: 6px;
 }
 
-.notice .notice-header {
-    background: transparent url('../../assets/images/header-bg.png') no-repeat center center;
-    height: 180px;
-    border-top-right-radius: 15px;
-}
-
 .notice .notice-header:after {
     content: "";
     position: absolute;
@@ -49,6 +51,8 @@
     margin-left: 78%;
     margin-top: -10px;
     border-bottom-left-radius: 25rem;
+    border-left: 3px solid rgba(0, 0, 0, 0.2);
+    border-top: 3px solid rgba(0, 0, 0, 0.2);
 }
 
 
@@ -58,9 +62,11 @@
     background: orangered;
     height: 150px;
     width: 30px;
-    margin-left: 94%;
-    margin-top: -10px;
+    margin-left: 93.8%;
+    margin-top: -7px;
     border-bottom-left-radius: 25rem;
+    border-right: 3px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
     z-index: 50
 }
 
@@ -72,5 +78,21 @@
     width: 50px;
     margin-top: 40px;
     margin-left: 84%;
-    z-index: 99
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    z-index: 9
+}
+
+.notice .notice-header .notice-header-title {
+    position: absolute;
+    background: orangered;
+    color: #FFF;
+    padding: 10px 0 10px 15px;
+    margin: 160px 0 0 145px;
+    font-weight: bold;
+    border-top-right-radius: 25rem;
+    border-bottom-right-radius: 25rem;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 4px 0 rgb(180, 180, 180);
+    width: 65%;
+    z-index: 999;
 }
