@@ -1,0 +1,51 @@
+.message-of-the-day {
+    position: absolute;
+    background: #212121 url('../../../assets/images/content-background.png') repeat 15% 53%;
+    height: 250px;
+    width: 100%;
+    z-index: -1
+}
+
+.message-of-the-day .message-of-the-day-body {
+    background: transparent;
+    height: 220px;
+    width: 100%;
+    margin-top: 80px;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    border: 1px solid #FFFF
+}
+
+.message-of-the-day .message-of-the-day-body .message-of-the-day-content {
+    background: orangered;
+    height: 200px;
+    width: 98%;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-top-left-radius: 4.5rem;
+    border-bottom-right-radius: 4.5rem;
+    border: 3px solid rgba(0,0,0,0.2)
+}
+
+.message-of-the-day .message-of-the-day-body .message-of-the-day-content h3 {
+    color: #FFF;
+    margin: 40px 0 0 40px;
+}
+
+.message-of-the-day .message-of-the-day-body .message-of-the-day-content p {
+    color: #FFF;
+    margin-left: 40px;
+    max-width: 70%;
+}
+
+.message-of-the-day .message-of-the-day-body .message-of-the-day-content img {
+    position: absolute;
+    margin-top: -270px;
+    margin-left: 50%
+}
+
+.message-of-the-day .message-of-the-day-body .message-of-the-day-content button {
+    background: #FFF;
+    border: none;
+    border-radius: 25rem
+}
