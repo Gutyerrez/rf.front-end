@@ -12,6 +12,8 @@ import {
 
 import reactHTMLParser from 'react-html-parser';
 
+import copy from 'copy-to-clipboard';
+
 import { Link } from 'react-router-dom';
 
 import './style.css';
@@ -41,7 +43,7 @@ export default class Header extends Component {
                         <Container>
                             <ul>
                                 <li>
-                                    <i className="fa fa-gamepad"></i> <span>jogar.redefocus.com</span> <p>Clique para copiar o ip</p>
+                                    <i className="fa fa-gamepad"></i> <span onClick={e => copy('jogar.redefocus.com')}>jogar.redefocus.com</span> <p>Clique para copiar o ip</p>
                                 </li>
                                 <li>
                                     <a href="/account/login"><i className="fa fa-user"></i> Minha conta</a>
