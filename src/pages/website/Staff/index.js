@@ -3,6 +3,8 @@ import {
     Container,
     Row,
     Col,
+    Card,
+    CardBody,
     Button
 } from 'reactstrap';
 
@@ -57,12 +59,25 @@ export default class Home extends Component {
                 {
                     name: "Mod",
                     color: "darkgreen",
-                    members: []
+                    members: [
+                        "HunterMasterYT",
+                        "Italu",
+                        "JoaoHFG"
+                    ]
                 },
                 {
                     name: "Ajudante",
                     color: "yellow",
-                    members: []
+                    members: [
+                        "Bombassar0",
+                        "Fortty",
+                        "ImReturn",
+                        "Luucasz_",
+                        "MikaelKOL",
+                        "XxMahAlicexX",
+                        "zanella",
+                        "ZzFirezZ"
+                    ]
                 }
             ],
             showStaffList: false,
@@ -93,7 +108,7 @@ export default class Home extends Component {
                     <Container>
                         <Row>
                             <Col md="8">
-                                <ul>
+                                <ul className="group-list">
                                     {
                                         this.state.groups.map(group =>
                                             <li>
@@ -147,6 +162,90 @@ export default class Home extends Component {
                                 }
                             </Col>
                             <Col md="4">
+                                <Card
+                                    className="mb-4"
+                                >
+                                    <div
+                                        className="h4 text-center"
+                                    >
+                                        Entre para nossa equipe
+                                    </div>
+                                    <CardBody
+                                        className="p-4 focus-content"
+                                    >
+                                        <div
+                                            className="h6 text-center text-justify font-weight-light mb-2"
+                                        >
+                                            Aplique-se e ajude essa família a crescer
+                                        </div>
+                                        <div
+                                            className="text-center pt-2"
+                                        >
+                                            <Button
+                                                color="danger"
+                                                className="btn-rounded shadow-sm text-white"
+                                                style={{
+                                                    borderRadius: '25rem'
+                                                }}
+                                            >
+                                                Integrar a equipe
+                                            </Button>
+                                            <p
+                                                className="text-muted font-weight-lihgt mt-2 mb-0"
+                                            >
+                                                <small>
+                                                    Ainda não há vagas abertas
+                                                </small>
+                                            </p>
+                                        </div>
+                                    </CardBody>
+                                </Card>
+                                <Card
+                                    className="mb-4 border-0"
+                                >
+                                <div
+                                    className="h4 text-center"
+                                >
+                                    Últimas atualizações
+                                </div>
+                                    <CardBody
+                                        className="p-4 focus-content"
+                                    >
+                                        <ul style={{
+                                            backgroundColor: 'transparent',
+                                            border: 'none',
+                                            padding: '5px',
+                                            margin: '0'
+                                        }}>
+                                            <li>
+                                                <b>oSrHyper_TM</b> adicionado como Focus.
+                                            </li>
+                                            <li>
+                                                <b>Gutyerrez</b> adicionado como Diretor.
+                                            </li>
+                                            <li>
+                                                <b>oSrGabriel_TM</b> adicionado como Diretor.
+                                            </li>
+                                            <li>
+                                                <b>iResett</b> adicionado como Diretor.
+                                            </li>
+                                            <li>
+                                                <b>AlfaSoldiier</b> adicionado como Gerente.
+                                            </li>
+                                        </ul>
+                                        <div className="mt-2 text-center">
+                                            <Button
+                                                color="danger"
+                                                className="btn-rounded shadow-sm text-white"
+                                                style={{
+                                                    borderRadius: '25rem'
+                                                }}
+                                            >
+                                                Ler mais...
+                                            </Button>
+                                        </div>
+                                    </CardBody>
+                                </Card>
                             </Col>
                         </Row>
                     </Container>

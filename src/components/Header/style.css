@@ -85,7 +85,7 @@ body {
 }
 
 .presentation .logo-container:hover {
-    opacity: 0.9;
+    opacity: 0.8;
     cursor: pointer
 }
 
@@ -99,7 +99,7 @@ body {
     background: #262626;
     float: right;
     margin-top: calc(135px / 3);
-    padding: 4px 10px;
+    padding: 4px 10px 8px 10px;
     border-radius: 4px;
     width: 260px
 }
@@ -108,8 +108,8 @@ body {
     position: absolute;
     background: #FF4500;
     color: #FFF;
-    height: 43px;
-    line-height: 28px;
+    height: 46px;
+    line-height: 30px;
     font-weight: bold;
     font-size: 24px;
     padding: 5px 8px;

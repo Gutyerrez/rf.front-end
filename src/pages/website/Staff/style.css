@@ -1,4 +1,4 @@
-.main ul {
+.main ul.group-list {
     background: #262626;
     padding: 20px;
     border-radius: 8px;
@@ -6,15 +6,15 @@
     border: 3px solid rgba(0, 0, 0, 0.2)
 }
 
-.main ul li {
+.main ul.group-list li {
     display: inline-block
 }
 
-.main ul li {
+.main ul.group-list li {
     margin-right: 5px;
 }
 
-.main ul li button {
+.main ul.group-list li button {
     background: orangered;
     color: rgba(0, 0, 0, 0.5) !important;
     border: 3px solid rgba(0, 0, 0, 0.2) !important;
@@ -24,27 +24,27 @@
     box-shadow: none !important
 }
 
-.main ul li button[aria-labelledby="darkorange"] {
+.main ul.group-list li button[aria-labelledby="darkorange"] {
     background: #FFAA00 !important
 }
 
-.main ul li button[aria-labelledby="darkaqua"] {
+.main ul.group-list li button[aria-labelledby="darkaqua"] {
     background: #00AAAA !important
 }
 
-.main ul li button[aria-labelledby="darkred"] {
+.main ul.group-list li button[aria-labelledby="darkred"] {
     background: #AA0000 !important
 }
 
-.main ul li button[aria-labelledby="red"] {
+.main ul.group-list li button[aria-labelledby="red"] {
     background: #FF5555 !important
 }
 
-.main ul li button[aria-labelledby="darkgreen"] {
+.main ul.group-list li button[aria-labelledby="darkgreen"] {
     background: #00AA00 !important
 }
 
-.main ul li button[aria-labelledby="yellow"] {
+.main ul.group-list li button[aria-labelledby="yellow"] {
     background: #FFFF55 !important
 }
 
@@ -94,4 +94,32 @@
 .staff-list h3 {
     color: #FFF;
     padding: 30px 0 0 20px
+}
+
+.card {
+    background: transparent !important;
+    border: none !important;
+}
+
+.card .h4 {
+    background: orangered;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.focus-content {
+    background: #262626 !important;
+    color: #FFF !important;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.2) !important;
+    border-top: none !important;
+    margin: -8px 6px 0 6px
+}
+
+.focus-content button {
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    -webkit-transition: background 0.2s linear;
 }
