@@ -10,6 +10,8 @@ import {
     DropdownMenu
 } from 'reactstrap';
 
+import reactHTMLParser from 'react-html-parser';
+
 import { Link } from 'react-router-dom';
 
 import './style.css';
@@ -68,7 +70,7 @@ export default class Header extends Component {
                                     <NavLink tag={Link} to="/shop">Loja</NavLink>
                                 </NavItem>
                                 <NavItem className={(this.props.active === "/staff" && !this.state.dropdownOpen ? 'active' : null)}>
-                                    <NavLink tag={Link} to="/shop">Equipe</NavLink>
+                                    <NavLink tag={Link} to="/staff">Equipe</NavLink>
                                 </NavItem>
                                 <NavItem className={(this.state.dropdownOpen ? 'active' : null)}>
                                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -86,6 +88,9 @@ export default class Header extends Component {
                                         >
                                             <ul>
                                                 <li>
+                                                    <NavLink tag={Link} to="/changelog">Atualizações</NavLink>
+                                                </li>
+                                                <li>
                                                     <NavLink tag={Link} to="/punishments">Punições</NavLink>
                                                 </li>
                                                 <li>
@@ -99,6 +104,21 @@ export default class Header extends Component {
                         </Container>
                     </Navbar>
                 </header>
+
+                <div className="message-of-the-day">
+                    <Container>
+                        <div className="message-of-the-day-body">
+                            <div className="message-of-the-day-content">
+                                <h3>{reactHTMLParser(this.props.motd_title)}</h3>
+                                <br />
+                                <p>
+                                    {reactHTMLParser(this.props.motd_message)}
+                                </p>
+                                <img src={this.props.motd_render} alt="render" width="450"/>
+                            </div>
+                        </div>
+                    </Container>
+                </div>
             </>
         );
     }

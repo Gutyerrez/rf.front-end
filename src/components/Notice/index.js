@@ -20,7 +20,7 @@ export default class Footer extends Component {
                         </div>
                     </a>
                     <div className="notice-author">
-                        <img src="https://cravatar.eu/helmavatar/Gutyerrez/96" />
+                        <img src={`https://cravatar.eu/helmavatar/${this.props.author}/96`} />
                         <span>{this.props.author}</span>
                     </div>
                     <div className="notice-title">

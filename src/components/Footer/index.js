@@ -14,11 +14,11 @@ export default class Footer extends Component {
                 <div className="footer">
                     <div className="logo">
                         <Container>
-                            <a href="http://twinsflammer.com.br/" className="logo-link">
+                            <a href="http://redefocus.com/" className="logo-link">
                                 <img src="/favicon.ico" className="img-fluid mb-3" alt="..." style={{ width: '50px' }} />
                             </a>
                             <div className="footer-social">
-                                <a href="http://www.twitter.com/TwinsFlammer"><i className="fa fa-twitter"></i></a>
+                                <a href="http://www.twitter.com/RedeFocusMC"><i className="fa fa-twitter"></i></a>
                             </div>
                             <ul>
                                 <li>

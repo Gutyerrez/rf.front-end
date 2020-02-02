@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     Container,
     Row,
@@ -14,28 +14,16 @@ import render from '../../../assets/images/render.png';
 
 import Notice from '../../../components/Notice';
 
-export default class Home extends React.Component {
+export default class Home extends Component {
     render() {
         return (
             <>
                 <Header
                     active="/"
+                    motd_title="Bem-vindo ao site do <b>Focus</b>"
+                    motd_message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc bibendum molestie ultricies. Donec dignissim venenatis hendrerit. Donec elit turpis, posuere sed enim blandit, aliquet placerat orci. Vivamus venenatis ultricies mauris, non blandit nunc. Fusce faucibus sem quis arcu sagittis, ut semper erat posuere."
+                    motd_render={render}
                 />
-
-                <div className="message-of-the-day">
-                    <Container>
-                        <div className="message-of-the-day-body">
-                            <div className="message-of-the-day-content">
-                                <h3>Bem-vindo ao site do <b>Focus</b></h3>
-                                <br />
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc bibendum molestie ultricies. Donec dignissim venenatis hendrerit. Donec elit turpis, posuere sed enim blandit, aliquet placerat orci. Vivamus venenatis ultricies mauris, non blandit nunc. Fusce faucibus sem quis arcu sagittis, ut semper erat posuere.
-                                </p>
-                                <img src={render} alt="render" width="450"/>
-                            </div>
-                        </div>
-                    </Container>
-                </div>
 
                 <div className="main">
                     <Container>

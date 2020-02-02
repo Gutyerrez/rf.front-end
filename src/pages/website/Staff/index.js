@@ -1,50 +1,156 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     Container,
     Row,
-    Col
+    Col,
+    Button
 } from 'reactstrap';
-
-import './style.css';
 
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
-import render from '../../../assets/images/render.png';
+import Staff from '../../../components/Staff';
 
-export default class Home extends React.Component {
+import render from '../../../assets/images/render-2.png';
+
+import './style.css';
+
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            groups: [
+                {
+                    name: "Focus",
+                    color: "darkorange",
+                    members: [
+                        "oSrHyper_TM"
+                    ]
+                },
+                {
+                    name: "Diretor",
+                    color: "darkaqua",
+                    members: [
+                        "Gutyerrez",
+                        "oSrGabriel_TM",
+                        "iResett"
+                    ]
+                },
+                {
+                    name: "Gerente",
+                    color: "darkred",
+                    members: [
+                        "AlfaSoldiier",
+                        "Hunterzz"
+                    ]
+                },
+                {
+                    name: "Admin",
+                    color: "red",
+                    members: [
+                        "Poort",
+                        "TurfIsBack",
+                        "FuscaoAzul"
+                    ]
+                },
+                {
+                    name: "Mod",
+                    color: "darkgreen",
+                    members: []
+                },
+                {
+                    name: "Ajudante",
+                    color: "yellow",
+                    members: []
+                }
+            ],
+            showStaffList: false,
+            currentStaffGroup: null
+        }
+
+        this.toggleStaffList = this.toggleStaffList.bind(this);
+    }
+
+    toggleStaffList(group) {
+        this.setState({
+            showStaffList: true,
+            currentStaffGroup: group
+        });
+    }
+
     render() {
         return (
             <>
                 <Header
-                    active="/"
+                    active="/staff"
+                    motd_title="Equipe"
+                    motd_message="Conheça os membros da equipe por trás da Rede Focus e saibam que são eles que fazem com que as engrenagens girarem de forma correta e deixam o servidor perfeitinho para você disfrutar das funcionalidades que nele há e jogar tranquilamente."
+                    motd_render={render}
                 />
 
-                <div className="message-of-the-day">
+                <div className="main">
                     <Container>
-                        <div className="message-of-the-day-body">
-                            <div className="message-of-the-day-content">
-                                <h3>Bem-vindo ao site do <b>Focus</b></h3>
-                                <br />
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc bibendum molestie ultricies. Donec dignissim venenatis hendrerit. Donec elit turpis, posuere sed enim blandit, aliquet placerat orci. Vivamus venenatis ultricies mauris, non blandit nunc. Fusce faucibus sem quis arcu sagittis, ut semper erat posuere.
-                                </p>
-                                <img src={render} alt="render" width="450"/>
-                            </div>
-                        </div>
+                        <Row>
+                            <Col md="8">
+                                <ul>
+                                    {
+                                        this.state.groups.map(group =>
+                                            <li>
+                                                <Button
+                                                    key={group.name}
+                                                    aria-labelledby={group.color}
+                                                    onClick={e => this.toggleStaffList(group)}
+                                                >
+                                                    {group.name}
+                                                </Button>
+                                            </li>
+                                        )
+                                    }
+                                </ul>
+                                {
+                                    this.state.showStaffList ?
+                                        (
+                                            <>
+                                                <div className="staff-header" aria-labelledby={this.state.currentStaffGroup.color}>{this.state.currentStaffGroup.name} ({this.state.currentStaffGroup.members.length})</div>
+                                                <div className="staff-list shadow-sm">
+                                                    <Row>
+                                                        {
+                                                            this.state.currentStaffGroup.members.length !== 0 ?
+                                                                this.state.currentStaffGroup.members.map(member =>
+                                                                    <Col
+                                                                        md="3"
+                                                                    >
+                                                                        <Staff
+                                                                            username={member}
+                                                                            twitter={member}
+                                                                            color={this.state.currentStaffGroup.color}
+                                                                            group={this.state.currentStaffGroup.name}
+                                                                        />
+                                                                    </Col>
+                                                                )
+                                                                :
+                                                                (
+                                                                    <>
+                                                                        <h3>Não há ninguém nesse grupo.</h3>
+                                                                    </>
+                                                                )
+                                                        }
+                                                    </Row>
+                                                </div>
+                                            </>
+                                        )
+                                        :
+                                        (
+                                            null
+                                        )
+                                }
+                            </Col>
+                            <Col md="4">
+                            </Col>
+                        </Row>
                     </Container>
                 </div>
-
-                <Container>
-                    <Row>
-                        <Col md="8">
-                            
-                        </Col>
-                        <Col md="4">
-                            
-                        </Col>
-                    </Row>
-                </Container>
 
                 <Footer />
             </>

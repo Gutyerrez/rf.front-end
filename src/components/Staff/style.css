@@ -1,0 +1,145 @@
+.staff {
+    padding: 24px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.staff:hover .staff-hover {
+    display: flex;
+}
+
+.staff .staff-helm {
+    border-radius: 5px;
+    display: inline-block;
+    z-index: 9
+}
+
+.staff:after {
+    content: "";
+    position: absolute;
+    color: #FFF;
+    height: 125px;
+    width: 125px;
+    background: transparent url('') no-repeat center center;
+    background-size: cover;
+    margin: -140px 0 0 -12px;
+}
+
+.staff[aria-labelledby="Focus"]:after {
+    background-image: url('../../assets/images/focus.png');
+}
+
+.staff[aria-labelledby="Diretor"]:after {
+    background-image: url('../../assets/images/director.png');
+}
+
+.staff[aria-labelledby="Gerente"]:after {
+    background-image: url('../../assets/images/manager.png');
+}
+
+.staff[aria-labelledby="Admin"]:after {
+    background-image: url('../../assets/images/administrator.png');
+}
+
+.staff[aria-labelledby="Mod"]:after {
+    background-image: url('../../assets/images/moderator.png');
+}
+
+.staff[aria-labelledby="Ajudante"]:after {
+    background-image: url('../../assets/images/helper.png');
+}
+
+.staff .staff-nick {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+}
+
+.staff .staff-server {
+    font-size: 14px;
+}
+
+.staff-hover:before {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: -5px;
+    left: calc(50% - 5px);
+}
+
+.staff-hover {
+    display: none;
+    position: absolute;
+    margin: 5px 20px 0 20px;
+    background: transparent;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    z-index: 1
+}
+
+.staff-hover div {
+    display: inline-block;
+    width: 49%;
+}
+
+.staff-hover a,
+.staff-hover a:hover {
+    color: rgba(0,0,0,0.5);
+    font-size: 22px;
+}
+
+.staff-hover[aria-labelledby="darkorange"] {
+    background-color: #FFAA00 !important
+}
+
+.staff-hover[aria-labelledby="darkorange"]:before {
+    border-bottom-color: #FFAA00 !important
+}
+
+.staff-hover[aria-labelledby="darkaqua"] {
+    background: #00AAAA !important
+}
+
+.staff-hover[aria-labelledby="darkaqua"]:before {
+    border-bottom-color: #00AAAA !important
+}
+
+.staff-hover[aria-labelledby="darkred"] {
+    background: #AA0000 !important
+}
+
+.staff-hover[aria-labelledby="darkred"]:before {
+    border-bottom-color: #AA0000 !important
+}
+
+.staff-hover[aria-labelledby="red"] {
+    background: #FF5555 !important
+}
+
+.staff-hover[aria-labelledby="red"]:before {
+    border-bottom-color: #FF5555 !important
+}
+
+.staff-hover[aria-labelledby="darkgreen"] {
+    background: #00AA00 !important
+}
+
+.staff-hover[aria-labelledby="darkgreen"]:before {
+    border-bottom-color: #00AA00 !important
+}
+
+.staff-hover[aria-labelledby="yellow"] {
+    background: #FFFF55 !important
+}
+
+.staff-hover[aria-labelledby="yellow"]:before {
+    border-bottom-color: #FFFF55 !important
+}
