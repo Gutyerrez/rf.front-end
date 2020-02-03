@@ -16,7 +16,7 @@ import render from '../../../assets/images/render-2.png';
 
 import './style.css';
 
-export default class Home extends Component {
+export default class ChangelogPage extends Component {
     constructor(props) {
         super(props);
         

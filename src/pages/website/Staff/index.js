@@ -15,71 +15,43 @@ import Staff from '../../../components/Staff';
 
 import render from '../../../assets/images/render-2.png';
 
+import api from '../../../services/api';
+
 import './style.css';
 
-export default class Home extends Component {
+const colors = [
+    {
+        code: '6',
+        name: 'darkorange'
+    },
+    {
+        code: '3',
+        name: 'darkaqua'
+    },
+    {
+        code: '4',
+        name: 'darkred'
+    },
+    {
+        code: 'c',
+        name: 'red'
+    },
+    {
+        code: '2',
+        name: 'darkgreen'
+    },
+    {
+        code: 'e',
+        name: 'yellow'
+    }
+];
+
+export default class StaffPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            groups: [
-                {
-                    name: "Focus",
-                    color: "darkorange",
-                    members: [
-                        "oSrHyper_TM"
-                    ]
-                },
-                {
-                    name: "Diretor",
-                    color: "darkaqua",
-                    members: [
-                        "Gutyerrez",
-                        "oSrGabriel_TM",
-                        "iResett"
-                    ]
-                },
-                {
-                    name: "Gerente",
-                    color: "darkred",
-                    members: [
-                        "AlfaSoldiier",
-                        "Hunterzz"
-                    ]
-                },
-                {
-                    name: "Admin",
-                    color: "red",
-                    members: [
-                        "Poort",
-                        "TurfIsBack",
-                        "FuscaoAzul"
-                    ]
-                },
-                {
-                    name: "Mod",
-                    color: "darkgreen",
-                    members: [
-                        "HunterMasterYT",
-                        "Italu",
-                        "JoaoHFG"
-                    ]
-                },
-                {
-                    name: "Ajudante",
-                    color: "yellow",
-                    members: [
-                        "Bombassar0",
-                        "Fortty",
-                        "ImReturn",
-                        "Luucasz_",
-                        "MikaelKOL",
-                        "XxMahAlicexX",
-                        "zanella",
-                        "ZzFirezZ"
-                    ]
-                }
-            ],
+            groups: [],
             showStaffList: false,
             currentStaffGroup: null
         }
@@ -91,6 +63,42 @@ export default class Home extends Component {
         this.setState({
             showStaffList: true,
             currentStaffGroup: group
+        });
+    }
+
+    componentDidMount() {
+        this._load();
+    }
+
+    _load = async () => {
+        const result = await api.get('/group');
+
+        const data = result.data;
+
+        const result1 = await api.get('/staff');
+
+        const groups = [];
+
+        for (const group of data) {
+            const members = [];
+
+            for (const staff of result1.data) {
+                if (staff.user.groups.length !== 0 && staff.user.groups[0].group_id === group.id) {
+                    members.push(staff.user);
+                }
+            }
+            
+            const color = colors.find(color1 => color1.code === group.color);
+
+            groups.push({
+                name: group.prefix.split("[")[1].split("]")[0],
+                color: color.name,
+                members
+            });
+        }
+
+        this.setState({
+            groups
         });
     }
 
@@ -111,9 +119,10 @@ export default class Home extends Component {
                                 <ul className="group-list">
                                     {
                                         this.state.groups.map(group =>
-                                            <li>
+                                            <li
+                                                key={group.name}
+                                            >
                                                 <Button
-                                                    key={group.name}
                                                     aria-labelledby={group.color}
                                                     onClick={e => this.toggleStaffList(group)}
                                                 >
@@ -135,10 +144,12 @@ export default class Home extends Component {
                                                                 this.state.currentStaffGroup.members.map(member =>
                                                                     <Col
                                                                         md="3"
+                                                                        key={member.id}
                                                                     >
                                                                         <Staff
-                                                                            username={member}
-                                                                            twitter={member}
+                                                                            username={member.display_name}
+                                                                            twitter_access_token={member.twitter_access_token}
+                                                                            twitter_token_secret={member.twitter_token_secret}
                                                                             color={this.state.currentStaffGroup.color}
                                                                             group={this.state.currentStaffGroup.name}
                                                                         />
@@ -203,10 +214,10 @@ export default class Home extends Component {
                                 <Card
                                     className="mb-4 border-0"
                                 >
-                                <div
-                                    className="h4 text-center"
-                                >
-                                    Últimas atualizações
+                                    <div
+                                        className="h4 text-center"
+                                    >
+                                        Últimas atualizações
                                 </div>
                                     <CardBody
                                         className="p-4 focus-content"
