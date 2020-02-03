@@ -2,6 +2,10 @@
     background: #FFF;
     border-radius: 8px;
     box-shadow: 1.30px .125rem .25rem rgba(0,0,0,.5);
+    margin-bottom: 15px
+}
+.notice:last-child {
+    margin-bottom: 0
 }
 
 .notice .notice-header {
@@ -19,10 +23,11 @@
     padding: 10px;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
-    margin: -100px 0 0 10px
+    margin: -100px 0 0 10px;
+    z-index: 999
 }
 
-.notice.notice-author img {
+.notice .notice-author img {
     border-radius: 6px
 }
 
@@ -63,35 +68,23 @@
 }
 
 .notice .notice-body {
+    position: relative;
     background: #FFF;
     min-height: 250px;
-    padding: 30px 20px
+    padding: 30px 20px;
+    overflow: hidden;
 }
 
 .notice .notice-body img {
     max-width: 100%;
 }
 
-.notice .notice-body .notice-breaker-section {
-    text-align: center;
-    background: none;
-    margin-top: -310px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    margin: 0 15px 50px 15px
-}
-
-.notice .notice-body .notice-breaker {
-    width: 100%;
-    height: 300px;
-    background: url(https://redesky.com/rgba.php?r=255&g=255&b=255&a=0);
-    background: rgba(255, 255, 255, 0);
-    _filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    background: -webkit-linear-gradient( top, rgba(255, 255, 255, 0) 0%, #fff 100% );
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
+.notice .notice-breaker-section .notice-breaker:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 .notice .notice-footer {

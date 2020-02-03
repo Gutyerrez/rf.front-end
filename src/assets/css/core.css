@@ -1,0 +1,70 @@
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: orangered;
+  border-radius: 25rem
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #fff;
+  background-color: orangered
+}
+
+.pagination a:hover {
+  text-decoration: none;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: orangered;
+}
+
+.pagination > .active > a {
+  cursor: pointer;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 4px 10px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: orangered;
+  text-decoration: none;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 25rem;
+  background-color: #676767;
+  margin: 0 5px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: #fff;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #fff;
+  background-color: #676767;
+  cursor: not-allowed
+}
+
+.pagination {
+    margin: 0;
+  }
+  
+  .pagination > li > a,
+  .pagination > li > span {
+    font-size: 16px;
+  }
