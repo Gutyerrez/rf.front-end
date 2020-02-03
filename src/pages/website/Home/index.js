@@ -85,17 +85,26 @@ export default class Home extends Component {
                                         />
                                     ))
                                 }
-                                <Paginate
-                                    hideFirstLastPages
-                                    activePage={this.state.activePage}
-                                    itemsCountPerPage={perPage}
-                                    totalItemsCount={this.state.notices.length}
-                                    pageRangeDisplayed={5}
-                                    prevPageText="« Página anterior"
-                                    nextPageText="Próxima página »"
-                                    innerClass="pagination justify-content-center"
-                                    onChange={this.handlePageChange}
-                                />
+                                {
+                                    this.state.notices.length > perPage ?
+                                        (
+                                            <Paginate
+                                                hideFirstLastPages
+                                                activePage={this.state.activePage}
+                                                itemsCountPerPage={perPage}
+                                                totalItemsCount={this.state.notices.length}
+                                                pageRangeDisplayed={5}
+                                                prevPageText="« Página anterior"
+                                                nextPageText="Próxima página »"
+                                                innerClass="pagination justify-content-center"
+                                                onChange={this.handlePageChange}
+                                            />
+                                        )
+                                        :
+                                        (
+                                            null
+                                        )
+                                }
                             </Col>
                             <Col md="4">
                                 <div className="mb-4">

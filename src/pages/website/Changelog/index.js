@@ -11,43 +11,84 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 
 import ReactHtmlParser from 'react-html-parser';
+import Paginate from 'react-js-pagination';
+
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 import render from '../../../assets/images/render-2.png';
 
+import api from '../../../services/api';
+
 import './style.css';
+
+const perPage = 5;
 
 export default class ChangelogPage extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            changelogs: [
-                {
-                    date: 'Hoje',
-                    changes: [
-                        {
-                            title: "Equipe:",
-                            messages: [
-                                "Gutyerrez fodeu com seu cu",
-                                "Sla mano outra mensagem"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    date: '01/02/2020',
-                    changes: [
-                        {
-                            title: "Rankup Over Power:",
-                            messages: [
-                                "Servidor lançado com sucesso!",
-                                "Sla mano outra mensagem"
-                            ]
-                        }
-                    ]
-                }
-            ]
+            activePage: 1,
+            changelogs: []
         };
+
+        this.handlePageChange = this.handlePageChange.bind(this);
+    }
+
+    componentDidMount() {
+        this._load();
+    }
+
+    _load = async () => {
+        const response = await api.get('/changelog');
+
+        const changelogs = [];
+
+        for (const changelog of response.data) {
+            const time = changelog.time;
+
+            var date = moment(time).format('L');
+
+            if (date === moment(new Date()).format('L')) date = "Hoje";
+
+            const title = changelog.title;
+            const message = changelog.message;
+
+            var validating1 = changelogs.find(changelog => changelog.date === date);
+
+            var changelog1 = !validating1 ? { date, changes: [{ title, messages: [] }] } : validating1;
+
+            var changelog2 = changelog1.changes.find(changelog => changelog.title === title);
+
+            const changes = !changelog2 ? { title, messages: [] } : changelog2;
+
+            const regex = /@\S+/g;
+
+            changes.messages.push(message.replace(regex, '<b>$&</b>'));
+
+            if (!changelog2) changelog1.changes.push(changes);
+
+            if (!validating1) changelogs.push(changelog1);
+        }
+
+        this.setState({
+            changelogs
+        });
+    }
+
+    handlePageChange = (pageNumber) => {
+        this.setState({
+            activePage: pageNumber
+        });
+    }
+
+    startPage() {
+        return this.state.activePage == 1 ? 0 : this.state.activePage * perPage - perPage;
+    }
+
+    endPage() {
+        return this.state.activePage == 1 ? perPage : this.state.activePage * perPage;
     }
 
     render() {
@@ -66,7 +107,7 @@ export default class ChangelogPage extends Component {
                             <CardBody>
                                 <div className="changelog" style={{ marginTop: '-50px' }}>
                                     {
-                                        this.state.changelogs.map(changelog => (
+                                        this.state.changelogs.slice(this.startPage(), this.endPage()).map(changelog => (
                                             <Row>
                                                 <Col
                                                     key={`${changelog.id}`}
@@ -106,6 +147,26 @@ export default class ChangelogPage extends Component {
                                                 </Col>
                                             </Row>
                                         ))
+                                    }
+                                    {
+                                        this.state.changelogs.length > perPage ?
+                                            (
+                                                <Paginate
+                                                    hideFirstLastPages
+                                                    activePage={this.state.activePage}
+                                                    itemsCountPerPage={perPage}
+                                                    totalItemsCount={this.state.changelogs.length}
+                                                    pageRangeDisplayed={5}
+                                                    prevPageText="« Página anterior"
+                                                    nextPageText="Próxima página »"
+                                                    innerClass="pagination mt-4 justify-content-center"
+                                                    onChange={this.handlePageChange}
+                                                />
+                                            )
+                                            :
+                                            (
+                                                null
+                                            )
                                     }
                                 </div>
                             </CardBody>

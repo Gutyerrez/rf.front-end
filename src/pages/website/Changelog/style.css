@@ -50,7 +50,8 @@
 
 .changelog .changelog-list li a,
 .changelog .changelog-list li a:hover {
-    color: orangered
+    color: orangered;
+    text-decoration: none;
 }
 
 .changelog .changelog-list li:before {

@@ -52,6 +52,7 @@ export default class StaffPage extends Component {
 
         this.state = {
             groups: [],
+            changelog: [],
             showStaffList: false,
             currentStaffGroup: null
         }
@@ -87,7 +88,7 @@ export default class StaffPage extends Component {
                     members.push(staff.user);
                 }
             }
-            
+
             const color = colors.find(color1 => color1.code === group.color);
 
             groups.push({
@@ -97,8 +98,11 @@ export default class StaffPage extends Component {
             });
         }
 
+        const changelog = await api.get(`/changelog?title=Equipe`);
+
         this.setState({
-            groups
+            groups,
+            changelog: changelog.data
         });
     }
 
@@ -226,12 +230,17 @@ export default class StaffPage extends Component {
                                             backgroundColor: 'transparent',
                                             border: 'none',
                                             padding: '5px',
-                                            margin: '0'
+                                            margin: '0',
+                                            listStyle: 'none'
                                         }}>
-                                            <li>
-                                                <b>oSrHyper_TM</b> adicionado como Focus.
-                                            </li>
-                                            <li>
+                                            {
+                                                this.state.changelog.slice(0, 5).map(changelog => (
+                                                    <li key={changelog.id}>
+                                                        {changelog.message}
+                                                    </li>
+                                                ))
+                                            }
+                                            {/* <li>
                                                 <b>Gutyerrez</b> adicionado como Diretor.
                                             </li>
                                             <li>
@@ -242,7 +251,7 @@ export default class StaffPage extends Component {
                                             </li>
                                             <li>
                                                 <b>AlfaSoldiier</b> adicionado como Gerente.
-                                            </li>
+                                            </li> */}
                                         </ul>
                                         <div className="mt-2 text-center">
                                             <Button
