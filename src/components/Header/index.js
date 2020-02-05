@@ -68,7 +68,7 @@ export default class Header extends Component {
                                 <li>
                                     {
                                         this.isLogged() ?
-                                            <Link to="/account/home"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} alt={this.username}/> {this.username()}</Link>
+                                            <Link to="/account"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} alt={this.username}/> {this.username()}</Link>
                                             :
                                             <Link to="/account/login"><i className="fa fa-user"></i> Minha conta</Link>
                                     }

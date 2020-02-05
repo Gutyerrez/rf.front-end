@@ -1,0 +1,54 @@
+.account-buttons {
+    background: #151515;
+    border-radius: 8px;
+}
+
+.account-buttons ul  {
+    padding: 0 0 0 10px
+}
+
+.account-buttons ul li {
+    background: rgba(0,0,0,0.3);
+    list-style: none;
+    height: 35px;
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 25rem;
+    cursor: pointer;
+}
+
+.account-buttons ul li:last-child {
+    margin-bottom: 0;
+}
+
+.account-buttons ul li i {
+    position: absolute;
+    background: orangered;
+    color: #FFF;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin: -5px 0 0 -15px;
+    border-radius: 25rem;
+}
+
+.account-buttons ul li a {
+    color: #FFF;
+    text-decoration: none;
+    margin-left: 45px;
+    line-height: 32px;
+}
+
+.account-buttons ul li.active {
+    background: orangered;
+}
+
+.account-buttons ul li.active i {
+    background: #080808;
+    color: orangered
+}
+
+.account-buttons ul li.active a {
+    display: block;
+}
