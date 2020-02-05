@@ -15,15 +15,29 @@ import { Link, Redirect } from 'react-router-dom';
 import api from '../../../../services/api';
 import config from '../../../../config/config.json';
 
+import Sidebar from '../Sidebar';
+
 import './style.css';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+
+        this.logout = this.logout.bind(this);
+    }
+
+    logout() {
+        sessionStorage.removeItem('user');
+    }
+
     render() {
         return (
             <>
                 <Header
-                    active="/account"
+                    active='/account'
                     motd_active={false}
+                    onlyLoggedIn={true}
+                    redirectURI='/'
                 />
 
                 <div className="main">
@@ -34,24 +48,7 @@ export default class Home extends Component {
                             <Col
                                 md="4"
                             >
-                                <Card>
-                                    <CardBody className="account-buttons">
-                                        <ul>
-                                            <li>
-                                                <i className="fa fa-home"></i>
-                                                <Link to="/account">Sua conta</Link>
-                                            </li>
-                                            <li>
-                                                <i className="fa fa-lock"></i>
-                                                <Link to="/account/password">Dados da sua conta</Link>
-                                            </li>
-                                            <li>
-                                                <i className="fa fa-sign-out"></i>
-                                                <Link to="#">Sair</Link>
-                                            </li>
-                                        </ul>
-                                    </CardBody>
-                                </Card>
+                                <Sidebar />
                             </Col>
                             <Col
                                 md="8"

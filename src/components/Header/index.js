@@ -14,13 +14,15 @@ import reactHTMLParser from 'react-html-parser';
 
 import copy from 'copy-to-clipboard';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import config from '../../config/config.json';
 
 import jwt from 'jsonwebtoken';
 
 import './style.css';
+
+const defaultIpAddress = 'jogar.redefocus.com';
 
 export default class Header extends Component {
     static defaultProps = {
@@ -31,10 +33,26 @@ export default class Header extends Component {
         super(props)
 
         this.state = {
-            dropdownOpen: false
+            dropdownOpen: false,
+            address: defaultIpAddress
         };
 
+        this.copy = this.copy.bind(this);
         this.toggle = this.toggle.bind(this);
+    }
+
+    copy() {
+        copy(defaultIpAddress);
+
+        this.setState({
+            address: 'Copiado com sucesso!'
+        });
+
+        setTimeout(() => {
+            this.setState({
+                address: defaultIpAddress
+            });
+        }, 1000);
     }
 
     toggle() {
@@ -58,17 +76,23 @@ export default class Header extends Component {
     render() {
         return (
             <>
+                {
+                    this.props.onlyLoggedIn && !this.isLogged() ?
+                        <Redirect to={this.props.redirectURI} />
+                        :
+                        null
+                }
                 <header>
                     <div className="login-bar">
                         <Container>
                             <ul>
                                 <li>
-                                    <i className="fa fa-gamepad"></i> <span onClick={e => copy('jogar.redefocus.com')}>jogar.redefocus.com</span> <p>Clique para copiar o ip</p>
+                                    <i className="fa fa-gamepad"></i> <span onClick={this.copy}>{this.state.address}</span> <p>Clique para copiar o ip</p>
                                 </li>
                                 <li>
                                     {
                                         this.isLogged() ?
-                                            <Link to="/account"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} alt={this.username}/> {this.username()}</Link>
+                                            <Link to="/account"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} alt="..." /> {this.username()}</Link>
                                             :
                                             <Link to="/account/login"><i className="fa fa-user"></i> Minha conta</Link>
                                     }
