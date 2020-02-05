@@ -19,7 +19,7 @@ import Footer from '../../../../components/Footer';
 import { Link, Redirect } from 'react-router-dom';
 
 import api from '../../../../services/api';
-import secret from '../../../../services/token';
+import config from '../../../../config/config.json';
 
 import sha256 from 'sha256';
 import md5 from 'md5';
@@ -133,7 +133,7 @@ export default class Home extends Component {
             const token = jwt.sign({
                 id: user.id,
                 username: user.display_name
-            }, secret);
+            }, config.secret);
 
             sessionStorage.setItem('user', token);
 

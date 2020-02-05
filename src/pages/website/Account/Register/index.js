@@ -9,15 +9,21 @@ import {
     FormGroup,
     Label,
     Input,
-    Button
+    Button,
+    Alert
 } from 'reactstrap';
 
 import Header from '../../../../components/Header';
 import Footer from '../../../../components/Footer';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import api from '../../../../services/api';
+import config from '../../../../config/config.json';
+
+import md5 from 'md5';
+
+import jwt from 'jsonwebtoken';
 
 export default class Home extends Component {
     constructor(props) {
@@ -29,12 +35,22 @@ export default class Home extends Component {
             email: undefined,
             emailErrorMessage: undefined,
             password: undefined,
-            passwordErrorMessage: undefined
+            passwordErrorMessage: undefined,
+            redirect: false,
+            redirectMessage: undefined
         }
 
+        this.handleDimiss = this.handleDimiss.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+    handleDimiss() {
+        this.setState({
+            redirectMessage: undefined
+        });
     }
 
     async handleUsernameChange(e) {
@@ -115,9 +131,58 @@ export default class Home extends Component {
         });
     }
 
+    async handleFormSubmit(e) {
+        e.preventDefault();
+
+        const {
+            username,
+            password,
+            email
+        } = this.state;
+
+        const response = await api.post('/user', {
+            username,
+            password: md5(password),
+            email
+        });
+
+        if (response.status !== 200) {
+            this.setState({
+                redirectMessage: {
+                    color: 'danger',
+                    message: 'Oops! Parece que algo saiu errado.'
+                }
+            });
+            return;
+        }
+
+        const user = response.data;
+
+        const token = jwt.sign({
+            id: user.id,
+            username: user.display_name,
+
+        }, config.secret);
+
+        sessionStorage.setItem('user', token);
+
+        this.setState({
+            redirectMessage: {
+                color: 'success',
+                message: 'Registrado com sucesso, redirecionando...'
+            }
+        });
+
+        setTimeout(() => {
+            this.setState({
+                redirect: true
+            });
+        }, 3000);
+    }
+
     inputsWithError() {
         let errors = '';
-        
+
         if (this.state.usernameErrorMessage) {
             errors += "Nome de usuário";
         }
@@ -136,6 +201,13 @@ export default class Home extends Component {
     render() {
         return (
             <>
+                {
+                    this.state.redirect ?
+                        <Redirect to="/" />
+                        :
+                        null
+                }
+
                 <Header
                     active="/account/login"
                     motd_active={false}
@@ -154,7 +226,24 @@ export default class Home extends Component {
                                             <h4>Cadastrando um novo usuário</h4>
                                         </div>
                                         <div className="login-body">
-                                            <Form>
+                                            <Form
+                                                onSubmit={this.handleFormSubmit}
+                                            >
+                                                {
+                                                    this.state.redirectMessage ?
+                                                        <FormGroup>
+                                                            <Alert
+                                                                isOpen={true}
+                                                                toggle={this.handleDimiss}
+                                                                color={this.state.redirectMessage.color}
+                                                                fade={true}
+                                                            >
+                                                                {this.state.redirectMessage.message}
+                                                            </Alert>
+                                                        </FormGroup>
+                                                        :
+                                                        null
+                                                }
                                                 <FormGroup>
                                                     <Label>
                                                         <i className="fa fa-user"></i>

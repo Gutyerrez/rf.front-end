@@ -16,7 +16,7 @@ import copy from 'copy-to-clipboard';
 
 import { Link } from 'react-router-dom';
 
-import secret from '../../services/token';
+import config from '../../config/config.json';
 
 import jwt from 'jsonwebtoken';
 
@@ -50,7 +50,7 @@ export default class Header extends Component {
     username() {
         const token = sessionStorage.getItem('user');
 
-        const user = jwt.verify(token, secret);
+        const user = jwt.verify(token, config.secret);
 
         return user.username;
     }
