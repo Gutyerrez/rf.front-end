@@ -9,13 +9,14 @@ import {
     FormGroup,
     Label,
     Input,
-    Button
+    Button,
+    Alert
 } from 'reactstrap';
 
 import Header from '../../../../components/Header';
 import Footer from '../../../../components/Footer';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import api from '../../../../services/api';
 import secret from '../../../../services/token';
@@ -32,16 +33,24 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            loginErrorMessage: undefined,
             username: undefined,
             usernameErrorMessage: undefined,
             password: undefined,
-            passwordErrorMessage: undefined
+            passwordErrorMessage: undefined,
+            redirect: false,
+            redirectMessage: undefined
         }
 
+        this.handleDimiss = this.handleDimiss.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+    handleDimiss() {
+        this.setState({
+            redirectMessage: undefined
+        });
     }
 
     async handleUsernameChange(e) {
@@ -127,9 +136,25 @@ export default class Home extends Component {
             }, secret);
 
             sessionStorage.setItem('user', token);
+
+            this.setState({
+                redirectMessage: {
+                    color: 'success',
+                    message: 'Autenticado, redirecionando...'
+                }
+            });
+
+            setTimeout(() => {
+                this.setState({
+                    redirect: true
+                });
+            }, 3000);
         } else {
             this.setState({
-                loginErrorMessage: 'A senha inserida está incorreta'
+                redirectMessage: {
+                    color: 'danger',
+                    message: 'A senha inserida está incorreta'
+                }
             });
         }
     }
@@ -165,6 +190,13 @@ export default class Home extends Component {
     render() {
         return (
             <>
+                {
+                    this.state.redirect ?
+                        <Redirect to="/" />
+                        :
+                        null
+                }
+
                 <Header
                     active="/account/login"
                     motd_active={false}
@@ -186,6 +218,21 @@ export default class Home extends Component {
                                             <Form
                                                 onSubmit={e => this.handleFormSubmit(e)}
                                             >
+                                                {
+                                                    this.state.redirectMessage ?
+                                                        <FormGroup>
+                                                            <Alert
+                                                                isOpen={true}
+                                                                toggle={this.handleDimiss}
+                                                                color={this.state.redirectMessage.color}
+                                                                fade={true}
+                                                            >
+                                                                {this.state.redirectMessage.message}
+                                                            </Alert>
+                                                        </FormGroup>
+                                                        :
+                                                        null
+                                                }
                                                 <FormGroup>
                                                     <Label>
                                                         <i className="fa fa-user"></i>

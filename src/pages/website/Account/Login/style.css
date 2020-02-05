@@ -110,14 +110,14 @@
 	margin: -20px 3.5px 0 0;
 }
 
-.login-content .login-body button {
+.login-content .login-body .form-group > button {
     background: orangered !important;
     border-radius: 25rem;
     border: 3px solid rgba(0, 0, 0, 0.2) !important;
     box-shadow: none !important;
 }
 
-.login-content .login-body button.disabled {
+.login-content .login-body .form-group > button.disabled {
     cursor: not-allowed !important
 }
 

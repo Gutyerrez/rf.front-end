@@ -16,7 +16,7 @@ import Paginate from 'react-js-pagination';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-import render from '../../../assets/images/render-2.png';
+import render from '../../../assets/images/render-3.png';
 
 import api from '../../../services/api';
 
