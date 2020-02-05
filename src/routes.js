@@ -9,6 +9,7 @@ import Home from './pages/website/Home';
 import Shop from './pages/shop/Home';
 import Staff from './pages/website/Staff';
 import Changelog from './pages/website/Changelog';
+import Login from './pages/website/Account/Login';
 
 const Routes = () => (
     <BrowserRouter>
@@ -17,6 +18,7 @@ const Routes = () => (
             <Route path="/shop" component={Shop} />
             <Route path="/staff" component={Staff} />
             <Route path="/changelog" component={Changelog} />
+            <Route path="/account/login" component={Login} />
         </Switch>
     </BrowserRouter>
 );

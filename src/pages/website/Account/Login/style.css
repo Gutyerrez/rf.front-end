@@ -1,0 +1,72 @@
+.login-content {
+    border-radius: 8px;
+    margin-top: -250px;
+}
+.login-content .login-header {
+    position: absolute;
+    background: #131313;
+    height: 100px;
+    width: 100%;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: -50px 0 0 -20px;
+    z-index: 50
+}
+
+.login-content .login-header:before {
+    content: "";
+    position: absolute;
+    background: #131313;
+    height: 50px;
+    width: 131px;
+    margin: -50px 0 0 /*202px*/20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    z-index: -1
+}
+
+.login-content .login-header img {
+    display: block;
+    margin: -30px 0 0 /*218px*/35px;
+    border-radius: 8px;
+    z-index: 999 !important
+}
+
+.login-content .login-body {
+    background: #262626;
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.login-content form {
+    margin-top: 60px
+}
+
+.login-content label {
+    position: absolute;
+    background: orangered;
+    color: #FFF;
+    padding: 10px 16px;
+    border-radius: 4px 0 4px 0;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    margin-top: -4px
+}
+
+.login-content .login-body input {
+    background: #fff !important;
+    box-shadow: none !important;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 25rem;
+    border-bottom-right-radius: 25rem;
+    color: orangered !important;
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    padding-left: 50px;
+}
+
+.login-content .login-footer {
+    
+}

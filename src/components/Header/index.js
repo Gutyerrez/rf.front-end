@@ -19,6 +19,10 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 export default class Header extends Component {
+    static defaultProps = {
+        motd_active: true
+    };
+
     constructor(props) {
         super(props)
 
@@ -57,7 +61,7 @@ export default class Header extends Component {
                             <div className="cart-item-count">
                                 <i className="fa fa-shopping-cart"></i>
                                 <a href="/shop/cart">
-                                     0 item por R$ 0,00
+                                    0 item por R$ 0,00
                                 </a>
                             </div>
                         </Container>
@@ -106,19 +110,26 @@ export default class Header extends Component {
                         </Container>
                     </Navbar>
                 </header>
-
                 <div className="message-of-the-day">
                     <Container>
-                        <div className="message-of-the-day-body">
-                            <div className="message-of-the-day-content">
-                                <h3>{reactHTMLParser(this.props.motd_title)}</h3>
-                                <br />
-                                <p>
-                                    {reactHTMLParser(this.props.motd_message)}
-                                </p>
-                                <img src={this.props.motd_render} alt="render" width="450"/>
-                            </div>
-                        </div>
+
+                        {
+                            this.props.motd_active ?
+                                <div className="message-of-the-day-body">
+                                    <div className="message-of-the-day-content">
+                                        <h3>{reactHTMLParser(this.props.motd_title)}</h3>
+                                        <br />
+                                        <p>
+                                            {reactHTMLParser(this.props.motd_message)}
+                                        </p>
+                                        <img src={this.props.motd_render} alt="render" width="450" />
+                                    </div>
+                                </div>
+                                :
+                                (
+                                    null
+                                )
+                        }
                     </Container>
                 </div>
             </>
