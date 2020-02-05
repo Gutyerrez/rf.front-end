@@ -15,9 +15,15 @@ import {
 import Header from '../../../../components/Header';
 import Footer from '../../../../components/Footer';
 
-import render from '../../../../assets/images/render.png';
+import { Link } from 'react-router-dom';
 
 import api from '../../../../services/api';
+import secret from '../../../../services/token';
+
+import sha256 from 'sha256';
+import md5 from 'md5';
+
+import jwt from 'jsonwebtoken';
 
 import './style.css';
 
@@ -26,27 +32,134 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
+            loginErrorMessage: undefined,
             username: undefined,
+            usernameErrorMessage: undefined,
             password: undefined,
-            usernameErrors: 0
+            passwordErrorMessage: undefined
         }
 
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    handleUsernameChange(e) {
+    async handleUsernameChange(e) {
         let username = e.target.value;
 
+        const tester = /[^a-zA-Z0-9_]/;
+
+        if (tester.test(username)) {
+            this.setState({
+                username: undefined,
+                usernameErrorMessage: 'Nome de usuário inválido'
+            });
+            return;
+        }
+
+        const response = await api.get(`/user?username=${username}`);
+
+        const user = response.data;
+
+        if (!user) {
+            this.setState({
+                username,
+                usernameErrorMessage: 'Este usuário não existe'
+            });
+            return;
+        }
+
+        if (user.id === 1) {
+            this.setState({
+                username: user.display_name,
+                usernameErrorMessage: 'Este usuário não é um jogador'
+            });
+            return;
+        }
+
+        if (!user.password) {
+            this.setState({
+                username: user.display_name,
+                usernameErrorMessage: 'Usuário não cadastrado'
+            });
+            return;
+        }
+
         this.setState({
-            username: username.replace(/[^a-zA-Z0-9-]/g, "")
+            username: user.display_name,
+            usernameErrorMessage: undefined
         });
     }
 
     handlePasswordChange(e) {
+        let password = e.target.value;
+
+        if (password.length < 6) {
+            this.setState({
+                password,
+                passwordErrorMessage: 'Senha fraca, inferior à 6 caracteres'
+            })
+            return;
+        }
+
         this.setState({
-            password: e.target.value
+            password,
+            passwordErrorMessage: undefined
         });
+    }
+
+    async handleFormSubmit(e) {
+        e.preventDefault();
+
+        const {
+            username,
+            password
+        } = this.state;
+
+        const response = await api.get(`/user?username=${username}`);
+
+        const user = response.data;
+
+        if (this.compare(password, user.password)) {
+            const token = jwt.sign({
+                id: user.id,
+                username: user.display_name
+            }, secret);
+
+            sessionStorage.setItem('user', token);
+        } else {
+            this.setState({
+                loginErrorMessage: 'A senha inserida está incorreta'
+            });
+        }
+    }
+
+    compare(password, hashedPassword) {
+        if (!hashedPassword.includes("$")) return md5(password).toLowerCase() === hashedPassword.toLowerCase();
+
+        const shaInfo = hashedPassword.split('$');
+
+        const salt = shaInfo[2].split("@")[1];
+        const hash = shaInfo[2].split("@")[0];
+
+        const password1 = sha256(password) + salt;
+        const password2 = sha256(password1);
+
+        return password2 === hash;
+    }
+
+    inputsWithError() {
+        let errors = '';
+
+        if (this.state.usernameErrorMessage) {
+            errors += "Nome de usuário";
+        }
+
+        if (this.state.passwordErrorMessage) {
+            errors += (errors !== '' ? ' e ' : '') + "Senha";
+        }
+
+        return errors;
     }
 
     render() {
@@ -55,9 +168,6 @@ export default class Home extends Component {
                 <Header
                     active="/account/login"
                     motd_active={false}
-                    motd_title="Acessando sua conta..."
-                    motd_message="...Descrição legal que alguém vai fazer..."
-                    motd_render={render}
                 />
 
                 <div className="main">
@@ -70,9 +180,12 @@ export default class Home extends Component {
                                     <CardBody className="login-content">
                                         <div className="login-header">
                                             <img src={`https://cravatar.eu/helmavatar/${this.state.username === '' ? 'Steve' : this.state.username}/100`} />
+                                            <h4>Entrando como {!this.state.username ? 'Ninguém' : this.state.username}...</h4>
                                         </div>
                                         <div className="login-body">
-                                            <Form>
+                                            <Form
+                                                onSubmit={e => this.handleFormSubmit(e)}
+                                            >
                                                 <FormGroup>
                                                     <Label>
                                                         <i className="fa fa-user"></i>
@@ -80,9 +193,19 @@ export default class Home extends Component {
                                                     <Input
                                                         type="text"
                                                         name="username"
-                                                        className={`form-control ${this.state.usernameErrors !== 0 ? 'error' : ''}`}
+                                                        className="form-control"
+                                                        placeholder="Nome de usuário..."
+                                                        maxLength={16}
                                                         onChange={e => this.handleUsernameChange(e)}
                                                     />
+                                                    {
+                                                        this.state.usernameErrorMessage ?
+                                                            <div className="error">
+                                                                {this.state.usernameErrorMessage}
+                                                            </div>
+                                                            :
+                                                            undefined
+                                                    }
                                                 </FormGroup>
                                                 <FormGroup>
                                                     <Label>
@@ -92,16 +215,44 @@ export default class Home extends Component {
                                                         type="password"
                                                         name="password"
                                                         className="form-control"
+                                                        placeholder="••••••••"
+                                                        onChange={e => this.handlePasswordChange(e)}
                                                     />
+                                                    {
+                                                        this.state.passwordErrorMessage ?
+                                                            <div className="error">
+                                                                {this.state.passwordErrorMessage}
+                                                            </div>
+                                                            :
+                                                            undefined
+                                                    }
                                                 </FormGroup>
-                                                <FormGroup>
-                                                    <Button>
-                                                        Autenticar
-                                                    </Button>
+                                                <FormGroup className="text-center">
+                                                    {
+                                                        !this.state.username || !this.state.password || this.state.usernameErrorMessage || this.state.passwordErrorMessage ?
+                                                            <Button
+                                                                disabled
+                                                            >
+                                                                {
+                                                                    this.state.usernameErrorMessage || this.state.passwordErrorMessage ?
+                                                                        `Resolva: ${this.inputsWithError()}`
+                                                                        :
+                                                                        `Preencha os campos à cima`
+                                                                }
+                                                            </Button>
+                                                            :
+                                                            <Button>
+                                                                {`Entrar como ${this.state.username}`}
+                                                            </Button>
+                                                    }
                                                 </FormGroup>
                                             </Form>
                                         </div>
-                                        <div className="login-fotter"></div>
+                                        <div className="login-footer">
+                                            <p>
+                                                Não possui uma conta? Clique <Link to="/account/register">aqui</Link> para criar uma agora.
+                                            </p>
+                                        </div>
                                     </CardBody>
                                 </Card>
                             </Col>

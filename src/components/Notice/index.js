@@ -13,6 +13,10 @@ export default class Footer extends Component {
         super(props);
     }
 
+    date() {
+        return moment(this.props.date).calendar();
+    }
+
     render() {
         return (
             <>
@@ -29,7 +33,24 @@ export default class Footer extends Component {
                     </div>
                     <div className="notice-title">
                         <p>{this.props.title}</p>
-                        <span>{moment(this.props.date).calendar()}</span>
+                        {
+                            this.date().length > 10 ?
+                            <span
+                                style={{
+                                    marginLeft: "40%"
+                                }}
+                            >
+                                {this.date()}
+                            </span>
+                            :
+                            <span
+                                style={{
+                                    marginLeft: "57%"
+                                }}
+                            >
+                            {this.date()}
+                            </span>
+                        }
                     </div>
                     <div className="notice-body">
                         {reactHtmlParser(this.props.content)}

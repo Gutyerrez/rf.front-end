@@ -19,7 +19,7 @@
     background: #131313;
     height: 50px;
     width: 131px;
-    margin: -50px 0 0 /*202px*/20px;
+    margin: -50px 0 0 20px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border: 3px solid rgba(0, 0, 0, 0.2);
@@ -29,9 +29,14 @@
 
 .login-content .login-header img {
     display: block;
-    margin: -30px 0 0 /*218px*/35px;
+    margin: -30px 0 0 35px;
     border-radius: 8px;
     z-index: 999 !important
+}
+
+.login-content .login-header h4 {
+    color: #FFF;
+    margin: -40px 0 0 150px;
 }
 
 .login-content .login-body {
@@ -39,17 +44,22 @@
     padding: 20px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    border: 3px solid #101010;
+    border-bottom: none;
+    border-top: none
 }
 
-.login-content form {
+.login-content .login-body form {
     margin-top: 60px
 }
 
-.login-content label {
+.login-content .login-body label {
     position: absolute;
     background: orangered;
     color: #FFF;
-    padding: 10px 16px;
+    padding: 10px 0;
+    width: 50px;
+    text-align: center;
     border-radius: 4px 0 4px 0;
     border: 3px solid rgba(0, 0, 0, 0.2);
     margin-top: -4px
@@ -64,9 +74,69 @@
     color: orangered !important;
     font-family: 'Ubuntu';
     font-weight: bold;
-    padding-left: 50px;
+    padding-left: 55px;
+}
+
+.login-content .login-body div.error {
+    background: #FF5555;
+    color: #FFF;
+    position: absolute;
+    margin: -40px 0 0 90%;
+    padding: 5px 10px;
+    min-width: 270px;
+    max-width: 100%;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    z-index: 999
+}
+
+.login-content .login-body div.error:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.login-content .login-body div.error:before {
+	border-color:  transparent;
+	border-right-color: rgb(202, 72, 72);
+	border-width: 19.9px;
+	margin: -20px 3.5px 0 0;
+}
+
+.login-content .login-body button {
+    background: orangered !important;
+    border-radius: 25rem;
+    border: 3px solid rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none !important;
+}
+
+.login-content .login-body button.disabled {
+    cursor: not-allowed !important
 }
 
 .login-content .login-footer {
-    
+    position: absolute;
+    background: #131313;
+    height: 50px;
+    width: 100%;
+    margin: -15px 0 0 -21px;
+    border-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-content .login-footer p {
+    color: #FFF;
+    padding: 10px 20px
+}
+
+.login-content .login-footer p a {
+    color: orangered;
+    text-decoration: none;
 }

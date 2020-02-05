@@ -61,8 +61,7 @@
     background: #FF4500;
     color: #FFF;
     padding: 5px 15px;
-    margin-top: -170px;
-    margin-left: 58%;
+    margin: -170px 0 0 0;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-radius: 25rem
 }

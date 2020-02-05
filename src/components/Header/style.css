@@ -45,6 +45,10 @@ body {
     text-decoration: none;
 }
 
+.login-bar a img {
+    border-radius: 4px
+}
+
 @media screen and (max-width: 998px) {
     .login-bar ul li:first-child i {
         display: none

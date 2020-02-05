@@ -16,6 +16,10 @@ import copy from 'copy-to-clipboard';
 
 import { Link } from 'react-router-dom';
 
+import secret from '../../services/token';
+
+import jwt from 'jsonwebtoken';
+
 import './style.css';
 
 export default class Header extends Component {
@@ -39,6 +43,18 @@ export default class Header extends Component {
         });
     }
 
+    isLogged() {
+        return sessionStorage.getItem('user');
+    }
+
+    username() {
+        const token = sessionStorage.getItem('user');
+
+        const user = jwt.verify(token, secret);
+
+        return user.username;
+    }
+
     render() {
         return (
             <>
@@ -50,7 +66,12 @@ export default class Header extends Component {
                                     <i className="fa fa-gamepad"></i> <span onClick={e => copy('jogar.redefocus.com')}>jogar.redefocus.com</span> <p>Clique para copiar o ip</p>
                                 </li>
                                 <li>
-                                    <a href="/account/login"><i className="fa fa-user"></i> Minha conta</a>
+                                    {
+                                        this.isLogged() ?
+                                            <Link to="/account/home"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} /> {this.username()}</Link>
+                                            :
+                                            <Link to="/account/login"><i className="fa fa-user"></i> Minha conta</Link>
+                                    }
                                 </li>
                             </ul>
                         </Container>
@@ -60,9 +81,9 @@ export default class Header extends Component {
                             <a className="logo-container">Rede Focus</a>
                             <div className="cart-item-count">
                                 <i className="fa fa-shopping-cart"></i>
-                                <a href="/shop/cart">
+                                <Link to="/shop/cart">
                                     0 item por R$ 0,00
-                                </a>
+                                </Link>
                             </div>
                         </Container>
                     </div>
