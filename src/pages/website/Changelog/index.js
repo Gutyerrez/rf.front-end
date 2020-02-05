@@ -12,6 +12,7 @@ import Footer from '../../../components/Footer';
 
 import ReactHtmlParser from 'react-html-parser';
 import Paginate from 'react-js-pagination';
+import * as qs from 'querystring';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -41,7 +42,11 @@ export default class ChangelogPage extends Component {
     }
 
     _load = async () => {
-        const response = await api.get('/changelog');
+        const parsed = qs.parse(this.props.location.search);
+
+        console.log(parsed);
+
+        const response = await api.get(`/changelog`);
 
         const changelogs = [];
 
@@ -52,12 +57,14 @@ export default class ChangelogPage extends Component {
 
             if (date === moment(new Date()).format('L')) date = "Hoje";
 
+            const finalDate = date;
+
             const title = changelog.title;
             const message = changelog.message;
 
-            var validating1 = changelogs.find(changelog => changelog.date === date);
+            var validating1 = changelogs.find(changelog => changelog.date === finalDate);
 
-            var changelog1 = !validating1 ? { date, changes: [{ title, messages: [] }] } : validating1;
+            var changelog1 = !validating1 ? { id: changelog.id, date, changes: [{ title, messages: [] }] } : validating1;
 
             var changelog2 = changelog1.changes.find(changelog => changelog.title === title);
 
@@ -84,11 +91,11 @@ export default class ChangelogPage extends Component {
     }
 
     startPage() {
-        return this.state.activePage == 1 ? 0 : this.state.activePage * perPage - perPage;
+        return this.state.activePage === 1 ? 0 : this.state.activePage * perPage - perPage;
     }
 
     endPage() {
-        return this.state.activePage == 1 ? perPage : this.state.activePage * perPage;
+        return this.state.activePage === 1 ? perPage : this.state.activePage * perPage;
     }
 
     render() {
@@ -108,9 +115,8 @@ export default class ChangelogPage extends Component {
                                 <div className="changelog" style={{ marginTop: '-50px' }}>
                                     {
                                         this.state.changelogs.slice(this.startPage(), this.endPage()).map(changelog => (
-                                            <Row>
+                                            <Row key={changelog.id}>
                                                 <Col
-                                                    key={`${changelog.id}`}
                                                     md="2"
                                                     sm="2"
                                                     offset="1"

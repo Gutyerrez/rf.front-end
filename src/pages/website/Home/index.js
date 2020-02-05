@@ -51,11 +51,11 @@ export default class Home extends Component {
     }
 
     startPage() {
-        return this.state.activePage == 1 ? 0 : this.state.activePage * perPage - perPage;
+        return this.state.activePage === 1 ? 0 : this.state.activePage * perPage - perPage;
     }
 
     endPage() {
-        return this.state.activePage == 1 ? perPage : this.state.activePage * perPage;
+        return this.state.activePage === 1 ? perPage : this.state.activePage * perPage;
     }
 
     render() {

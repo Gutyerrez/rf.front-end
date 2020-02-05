@@ -8,11 +8,7 @@ import 'moment/locale/pt-br';
 
 import './style.css';
 
-export default class Footer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+export default class Notice extends Component {
     date() {
         return moment(this.props.date).calendar();
     }
@@ -28,7 +24,7 @@ export default class Footer extends Component {
                         </div>
                     </a>
                     <div className="notice-author">
-                        <img src={`https://cravatar.eu/helmavatar/${this.props.author}/96`} />
+                        <img src={`https://cravatar.eu/helmavatar/${this.props.author}/96`} alt={this.props.author}/>
                         <span>{this.props.author}</span>
                     </div>
                     <div className="notice-title">

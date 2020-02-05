@@ -28,7 +28,7 @@ import jwt from 'jsonwebtoken';
 
 import './style.css';
 
-export default class Home extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -211,7 +211,7 @@ export default class Home extends Component {
                                 <Card>
                                     <CardBody className="login-content">
                                         <div className="login-header">
-                                            <img src={`https://cravatar.eu/helmavatar/${this.state.username === '' ? 'Steve' : this.state.username}/100`} />
+                                            <img src={`https://cravatar.eu/helmavatar/${this.state.username === '' ? 'Steve' : this.state.username}/100`} alt={this.state.username}/>
                                             <h4>Entrando como {!this.state.username ? 'Ninguém' : this.state.username}...</h4>
                                         </div>
                                         <div className="login-body">

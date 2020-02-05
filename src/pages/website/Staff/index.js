@@ -15,6 +15,8 @@ import Staff from '../../../components/Staff';
 
 import render from '../../../assets/images/render-2.png';
 
+import { Link } from 'react-router-dom';
+
 import api from '../../../services/api';
 
 import './style.css';
@@ -147,8 +149,8 @@ export default class StaffPage extends Component {
                                                             this.state.currentStaffGroup.members.length !== 0 ?
                                                                 this.state.currentStaffGroup.members.map(member =>
                                                                     <Col
-                                                                        md="3"
                                                                         key={member.id}
+                                                                        md="3"
                                                                     >
                                                                         <Staff
                                                                             username={member.display_name}
@@ -197,6 +199,8 @@ export default class StaffPage extends Component {
                                             className="text-center pt-2"
                                         >
                                             <Button
+                                                tag={Link}
+                                                to="#"
                                                 color="danger"
                                                 className="btn-rounded shadow-sm text-white"
                                                 style={{
@@ -240,21 +244,11 @@ export default class StaffPage extends Component {
                                                     </li>
                                                 ))
                                             }
-                                            {/* <li>
-                                                <b>Gutyerrez</b> adicionado como Diretor.
-                                            </li>
-                                            <li>
-                                                <b>oSrGabriel_TM</b> adicionado como Diretor.
-                                            </li>
-                                            <li>
-                                                <b>iResett</b> adicionado como Diretor.
-                                            </li>
-                                            <li>
-                                                <b>AlfaSoldiier</b> adicionado como Gerente.
-                                            </li> */}
                                         </ul>
                                         <div className="mt-2 text-center">
                                             <Button
+                                                tag={Link}
+                                                to="/changelog?title=Equipe"
                                                 color="danger"
                                                 className="btn-rounded shadow-sm text-white"
                                                 style={{

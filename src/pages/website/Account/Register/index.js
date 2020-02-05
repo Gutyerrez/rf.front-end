@@ -25,7 +25,7 @@ import md5 from 'md5';
 
 import jwt from 'jsonwebtoken';
 
-export default class Home extends Component {
+export default class Register extends Component {
     constructor(props) {
         super(props);
 
@@ -86,7 +86,7 @@ export default class Home extends Component {
     async handleEmailChange(e) {
         let email = e.target.value;
 
-        const tester = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const tester = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
         if (!tester.test(email)) {
             this.setState({
@@ -222,7 +222,7 @@ export default class Home extends Component {
                                 <Card>
                                     <CardBody className="login-content">
                                         <div className="login-header">
-                                            <img src={`https://cravatar.eu/helmavatar/${this.state.username === '' ? 'Steve' : this.state.username}/100`} />
+                                            <img src={`https://cravatar.eu/helmavatar/${this.state.username === '' ? 'Steve' : this.state.username}/100`} alt={this.state.username}/>
                                             <h4>Cadastrando um novo usuário</h4>
                                         </div>
                                         <div className="login-body">

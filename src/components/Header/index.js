@@ -68,7 +68,7 @@ export default class Header extends Component {
                                 <li>
                                     {
                                         this.isLogged() ?
-                                            <Link to="/account/home"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} /> {this.username()}</Link>
+                                            <Link to="/account/home"><img src={`https://cravatar.eu/helmavatar/${this.username()}/32`} alt={this.username}/> {this.username()}</Link>
                                             :
                                             <Link to="/account/login"><i className="fa fa-user"></i> Minha conta</Link>
                                     }
@@ -78,7 +78,7 @@ export default class Header extends Component {
                     </div>
                     <div className="presentation">
                         <Container>
-                            <a className="logo-container">Rede Focus</a>
+                            <Link to="/" className="logo-container">Rede Focus</Link>
                             <div className="cart-item-count">
                                 <i className="fa fa-shopping-cart"></i>
                                 <Link to="/shop/cart">

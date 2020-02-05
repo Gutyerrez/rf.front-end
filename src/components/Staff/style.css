@@ -20,7 +20,7 @@
     color: #FFF;
     height: 125px;
     width: 125px;
-    background: transparent url('') no-repeat center center;
+    background: transparent url('../../assets/images/helper.png') no-repeat center center;
     background-size: cover;
     margin: -140px 0 0 -12px;
 }
