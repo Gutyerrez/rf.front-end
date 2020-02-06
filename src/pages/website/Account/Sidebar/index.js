@@ -26,7 +26,7 @@ export default class Home extends Component {
                             <Link to="/account"><i className="fa fa-home"></i> Sua conta</Link>
                         </li>
                         <li>
-                            <Link to="/account/password"><i className="fa fa-lock"></i> Dados da sua conta</Link>
+                            <Link to="/account/security"><i className="fa fa-lock"></i> Dados da sua conta</Link>
                         </li>
                         <li>
                             <Link to="#" onClick={this.logout}><i className="fa fa-sign-out"></i> Sair</Link>

@@ -21,8 +21,7 @@ import { Link, Redirect } from 'react-router-dom';
 import api from '../../../../services/api';
 import config from '../../../../config/config.json';
 
-import sha256 from 'sha256';
-import md5 from 'md5';
+import Helper from '../../../../util/Helper';
 
 import jwt from 'jsonwebtoken';
 
@@ -129,10 +128,12 @@ export default class Login extends Component {
 
         const user = response.data;
 
-        if (this.compare(password, user.password)) {
+        if (Helper.compare(password, user.password)) {
             const token = jwt.sign({
                 id: user.id,
-                username: user.display_name
+                username: user.display_name,
+                email: user.email,
+                password: user.password
             }, config.secret);
 
             sessionStorage.setItem('user', token);
@@ -157,20 +158,6 @@ export default class Login extends Component {
                 }
             });
         }
-    }
-
-    compare(password, hashedPassword) {
-        if (!hashedPassword.includes("$")) return md5(password).toLowerCase() === hashedPassword.toLowerCase();
-
-        const shaInfo = hashedPassword.split('$');
-
-        const salt = shaInfo[2].split("@")[1];
-        const hash = shaInfo[2].split("@")[0];
-
-        const password1 = sha256(password) + salt;
-        const password2 = sha256(password1);
-
-        return password2 === hash;
     }
 
     inputsWithError() {

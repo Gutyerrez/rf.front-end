@@ -161,7 +161,8 @@ export default class Register extends Component {
         const token = jwt.sign({
             id: user.id,
             username: user.display_name,
-
+            email: user.email,
+            password: user.password
         }, config.secret);
 
         sessionStorage.setItem('user', token);

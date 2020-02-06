@@ -12,6 +12,7 @@ import Changelog from './pages/website/Changelog';
 import Login from './pages/website/Account/Login';
 import Register from './pages/website/Account/Register';
 import Account  from './pages/website/Account/Home';
+import Security  from './pages/website/Account/Security';
 
 const Routes = () => (
     <BrowserRouter>
@@ -23,6 +24,7 @@ const Routes = () => (
             <Route path="/account" exact component={Account} />
             <Route path="/account/login" component={Login} />
             <Route path="/account/register" component={Register} />
+            <Route path="/account/security" component={Security} />
         </Switch>
     </BrowserRouter>
 );

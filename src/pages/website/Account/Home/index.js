@@ -53,7 +53,7 @@ export default class Home extends Component {
                             <Col
                                 md="8"
                             >
-
+                                
                             </Col>
                         </Row>
                     </Container>
