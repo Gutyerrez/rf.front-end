@@ -46,14 +46,14 @@ export default class Home extends Component {
                             marginTop: "-250px"
                         }}>
                             <Col
-                                md="4"
-                            >
-                                <Sidebar />
-                            </Col>
-                            <Col
                                 md="8"
                             >
                                 
+                            </Col>
+                            <Col
+                                md="4"
+                            >
+                                <Sidebar />
                             </Col>
                         </Row>
                     </Container>

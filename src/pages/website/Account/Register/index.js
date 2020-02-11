@@ -92,7 +92,7 @@ export default class Register extends Component {
             this.setState({
                 email: undefined,
                 emailErrorMessage: 'E-email com formato inválido'
-            })
+            });
             return;
         }
 

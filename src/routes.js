@@ -9,6 +9,7 @@ import Home from './pages/website/Home';
 import Shop from './pages/shop/Home';
 import Staff from './pages/website/Staff';
 import Changelog from './pages/website/Changelog';
+import Punishments from './pages/website/Punishments';
 import Login from './pages/website/Account/Login';
 import Register from './pages/website/Account/Register';
 import Account  from './pages/website/Account/Home';
@@ -21,6 +22,7 @@ const Routes = () => (
             <Route path="/shop" component={Shop} />
             <Route path="/staff" component={Staff} />
             <Route path="/changelog" component={Changelog} />
+            <Route path="/punishments" component={Punishments} />
             <Route path="/account" exact component={Account} />
             <Route path="/account/login" component={Login} />
             <Route path="/account/register" component={Register} />

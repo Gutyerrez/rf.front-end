@@ -132,7 +132,7 @@ export default class StaffPage extends Component {
                                                     aria-labelledby={group.color}
                                                     onClick={e => this.toggleStaffList(group)}
                                                 >
-                                                    {group.name}
+                                                    {group.name.substring(7, 0)}
                                                 </Button>
                                             </li>
                                         )

@@ -12,7 +12,7 @@ import Footer from '../../../components/Footer';
 
 import ReactHtmlParser from 'react-html-parser';
 import Paginate from 'react-js-pagination';
-import * as qs from 'querystring';
+import * as queryString from 'querystring';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -42,11 +42,9 @@ export default class ChangelogPage extends Component {
     }
 
     _load = async () => {
-        const parsed = qs.parse(this.props.location.search);
+        const query = queryString.parse(this.props.location.search);
 
-        console.log(parsed);
-
-        const response = await api.get(`/changelog`);
+        const response = await api.get(`/changelog${query.title === undefined ? '' : `?title=${query.title}`}`);
 
         const changelogs = [];
 
