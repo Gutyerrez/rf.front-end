@@ -1,0 +1,52 @@
+.button-more {
+    border-radius: 25rem !important;
+    border: 3px solid rgba(0,0,0,0.2) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.punishments-sidebar .input-group input {
+    background: orangered !important;
+    color: #FFF !important;
+    font-family: 'Ubuntu' !important;
+    font-weight: bold;
+    border-radius: 25rem;
+    border: 3px solid rgba(0,0,0,0.2) !important;
+    border-right-width: 0 !important;
+    box-shadow: none !important;
+}
+
+.punishments-sidebar .input-group input::placeholder {
+    color: #FFF;
+}
+
+.punishments-sidebar .input-group button {
+    background: orangered !important;
+    border-top-right-radius: 25rem;
+    border-bottom-right-radius: 25rem;
+    border: 3px solid rgba(0,0,0,0.2) !important;
+    border-left-width: 0 !important;
+    box-shadow: none !important;
+    padding-right: 15px !important
+}
+
+button.back-button {
+    border-radius: 25rem;
+    z-index: 99;
+}
+
+button.back-button > span.button-message {
+    display: none;
+}
+
+button.back-button:hover > i {
+    display: none
+}
+
+button.back-button:hover {
+    margin-left: 70.8% !important;
+}
+
+button.back-button:hover > span.button-message {
+    display: block !important;
+}

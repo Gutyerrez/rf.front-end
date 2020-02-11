@@ -1,0 +1,80 @@
+.punishments .table,
+.punishments .table th,
+.punishments .table thead th,
+.punishments .table td,
+.punishments .table tbody td {
+    border: none;
+    margin-bottom: 0;
+    color: #FFF;
+    padding: 7px;
+}
+
+.punishments .punishment {
+    background: #FFF;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.punishments .punishment i {
+    position: absolute;
+    line-height: 22px;
+}
+
+.punishments .punishment span {
+    margin-left: 18px
+}
+
+.punishments .punishment a {
+    color: #FFF;
+}
+
+.punishments .punishment.Finalizado {
+    background: #c64343;
+    color: #FFF;
+}
+
+.punishments .punishment.Ativo {
+    background: #3fcb2d;
+    color: #FFF;
+}
+
+.punishments .punishment.Revogado {
+    background: #828282;
+    color: #FFF;
+}
+
+.punishments .punishment.Pendente {
+    background: #f2b126;
+    color: #FFF;
+}
+
+.punishments .punishment-details {
+    margin-top: 15px;
+}
+
+.punishments .punishment-arrow {
+    position: absolute;
+    content: " ";
+    margin-left: 15px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.punishments .punishment-arrow.Finalizado {
+    border-bottom: 10px solid #c64343;
+}
+
+.punishments .punishment-arrow.Ativo {
+    border-bottom: 10px solid #3fcb2d;
+}
+
+.punishments .punishment-arrow.Revogado {
+    border-bottom: 10px solid #828282;
+}
+
+.punishments .punishment-arrow.Pendente {
+    border-bottom: 10px solid #f2b126;
+}

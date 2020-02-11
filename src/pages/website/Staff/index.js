@@ -226,7 +226,7 @@ export default class StaffPage extends Component {
                                         className="h4 text-center"
                                     >
                                         Últimas atualizações
-                                </div>
+                                    </div>
                                     <CardBody
                                         className="p-4 focus-content"
                                     >
