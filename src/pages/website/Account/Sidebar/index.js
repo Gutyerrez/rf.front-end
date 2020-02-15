@@ -20,7 +20,7 @@ export default class Home extends Component {
     render() {
         return (
             <Card>
-                <CardBody className="account-buttons">
+                <CardBody className="sidebar-buttons">
                     <ul>
                         <li>
                             <Link to="/account"><i className="fa fa-home"></i> Sua conta</Link>
