@@ -7,6 +7,7 @@ import {
 
 import Home from './pages/website/Home';
 import Shop from './pages/shop/Home';
+import Category from './pages/shop/Category';
 import Staff from './pages/website/Staff';
 import Changelog from './pages/website/Changelog';
 import Punishments from './pages/website/Punishments';
@@ -19,7 +20,8 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/shop" component={Shop} />
+            <Route path="/shop" exact component={Shop} />
+            <Route path="/shop/:id" component={Category} />
             <Route path="/staff" component={Staff} />
             <Route path="/changelog" component={Changelog} />
             <Route path="/punishments" component={Punishments} />
