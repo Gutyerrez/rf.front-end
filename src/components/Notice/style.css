@@ -70,6 +70,7 @@
     position: relative;
     background: #FFF;
     min-height: 250px;
+    max-height: 500px;
     padding: 30px 20px;
     overflow: hidden;
 }
