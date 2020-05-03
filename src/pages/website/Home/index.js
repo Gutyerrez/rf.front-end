@@ -63,8 +63,8 @@ export default class Home extends Component {
             <>
                 <Header
                     active="/"
-                    motd_title="Bem-vindo ao nosso site"
-                    motd_message="...Descrição legal que alguém vai fazer..."
+                    motd_title="Bem-vindo ao nosso site oficial!"
+                    motd_message={`Você está acessando o site da Rede Focus, aqui você poderá acompanhar notícias, atualizações e até mesmo efetuar compras através de nossa <a href="shop">loja</a>. É possível também verificar nossa atual equipe para saber em quem confiar e evitar ser enganado por pessoas que se passam por membros de nossa equipe.`}
                     motd_render={render}
                 />
 

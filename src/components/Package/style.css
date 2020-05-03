@@ -1,0 +1,129 @@
+.category-items {
+  margin-top: 30px
+}
+
+.package-item {
+  margin: 15px 0
+}
+
+.package-item:first-child {
+  margin-top: 5px
+}
+
+.package-item.CASH {
+  background-color: #1b1f22;
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 3px solid rgba(0,0,0,0.2)
+}
+
+.package-item.CASH small {
+  font-size: 18px !important;
+  color: #ffffff !important;
+  font-weight: 100 !important;
+  margin: 0px !important;
+  margin-top: 10px !important;
+  text-transform: capitalize;
+  opacity: 0.8;
+}
+
+.package-item.CASH h3 {
+  color: #FFF;
+  font-weight: 500;
+}
+
+.package-item.CASH p {
+  font-size: 29px;
+  font-weight: 700;
+  color: #ffed54;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  margin: 20px 0px;
+}
+
+.package-item button {
+  background: orangered;
+  border-color: rgba(0,0,0,0.2);
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  margin: 5px;
+  outline: none !important;
+  cursor: pointer
+}
+
+.product-table table {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.product-table table>tbody>tr:nth-child(odd)>td:nth-child(even),
+.product-table table>tbody>tr:nth-child(even)>td:nth-child(even) {
+  background-color: rgb(245, 109, 59)
+}
+
+.product-table table>tbody>tr:nth-child(odd)>td:nth-child(odd),
+.product-table table>tbody>tr:nth-child(even)>td:nth-child(odd) {
+  background-color: #2d4059;
+}
+
+.product-table table>tbody>tr.product-title:nth-child(odd)>td:nth-child(2) {
+  border-top-left-radius: 8px;
+}
+
+.product-table table>tbody>tr.product-title:nth-child(odd)>td:last-child {
+  border-top-right-radius: 8px;
+}
+
+.product-table td {
+  padding: 15px;
+}
+
+.product-table tr td.category-title {
+  text-align: left;
+  background: #151515 !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.product-table tr td.category-title.bordered {
+  border-radius: 8px 0 0 0;
+}
+
+.product-table table>tbody>tr:nth-child(odd)>td.attribute-info {
+  background: #151515;
+  color: #efefef;
+  font-weight: 500;
+}
+
+.product-table table>tbody>tr:nth-child(even)>td.attribute-info {
+  background: #151515;
+  color: #efefef;
+  font-weight: 500;
+}
+
+.product-table h1 {
+  font-size: 26px;
+}
+
+.product-table h1, .product-table h2 {
+  color: #ffffff;
+  margin: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.product-table p {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffed54;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}

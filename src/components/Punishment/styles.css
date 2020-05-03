@@ -16,9 +16,14 @@
     font-size: 14px;
 }
 
+.punishments .punishment a {
+    text-decoration: none !important;
+}
+
 .punishments .punishment i {
     position: absolute;
     line-height: 22px;
+    margin-left: 5px
 }
 
 .punishments .punishment span {

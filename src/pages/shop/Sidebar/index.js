@@ -15,12 +15,7 @@ export default class Sidebar extends Component {
             servers: [
                 {
                     id: 1,
-                    name: 'Factions Wizard',
-                    icon: 'shopping-cart'
-                },
-                {
-                    id: 2,
-                    name: 'Factions Radioativo',
+                    name: 'Factions Caribe',
                     icon: 'shopping-cart'
                 }
             ],
@@ -30,27 +25,27 @@ export default class Sidebar extends Component {
                     display_name: 'Gutyerrez'
                 },
                 {
-                    id: 1,
+                    id: 2,
                     display_name: 'AlfaSoldiier'
                 },
                 {
-                    id: 1,
+                    id: 3,
                     display_name: 'oSrHyper_TM'
                 },
                 {
-                    id: 1,
+                    id: 4,
                     display_name: 'oSrGabriel_TM'
                 },
                 {
-                    id: 1,
+                    id: 5,
                     display_name: 'hunterz'
                 },
                 {
-                    id: 1,
+                    id: 6,
                     display_name: 'laghnet'
                 },
                 {
-                    id: 1,
+                    id: 7,
                     display_name: 'italu'
                 }
             ]

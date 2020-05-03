@@ -31,10 +31,6 @@ const colors = [
         name: 'darkaqua'
     },
     {
-        code: '4',
-        name: 'darkred'
-    },
-    {
         code: 'c',
         name: 'red'
     },
@@ -43,8 +39,8 @@ const colors = [
         name: 'darkgreen'
     },
     {
-        code: 'e',
-        name: 'yellow'
+        code: 'a',
+        name: 'green'
     }
 ];
 
@@ -83,12 +79,16 @@ export default class StaffPage extends Component {
         const groups = [];
 
         for (const group of data) {
+            console.log(group);
+
             const members = [];
 
             for (const staff of result1.data) {
                 if (staff.user.groups.length !== 0 && staff.user.groups[0].group_id === group.id) {
                     members.push(staff.user);
                 }
+
+                console.log(staff);
             }
 
             const color = colors.find(color1 => color1.code === group.color);
@@ -101,6 +101,8 @@ export default class StaffPage extends Component {
         }
 
         const changelog = await api.get(`/changelog?title=Equipe`);
+    
+        console.log(groups);
 
         this.setState({
             groups,
@@ -132,7 +134,7 @@ export default class StaffPage extends Component {
                                                     aria-labelledby={group.color}
                                                     onClick={e => this.toggleStaffList(group)}
                                                 >
-                                                    {group.name.substring(7, 0)}
+                                                    {group.name}
                                                 </Button>
                                             </li>
                                         )

@@ -72,7 +72,7 @@ export default class Punishment extends Component {
                                         <tbody>
                                             <tr>
                                                 <td>{this.props.punish_reason.display_name}</td>
-                                                <td>{this.props.end_time ? 'Permanente' : moment(this.props.end_time).format(`LLL`)}</td>
+                                                <td>{this.props.end_time ? moment(this.props.end_time).format(`LLL`) : 'Permanente'}</td>
                                                 <td>{this.status()}</td>
                                                 <td>
                                                     {

@@ -19,7 +19,7 @@
     color: rgba(0, 0, 0, 0.5) !important;
     border: 3px solid rgba(0, 0, 0, 0.2) !important;
     padding: 15px;
-    width: 105px;
+    width: 125px;
     font-weight: bold;
     box-shadow: none !important
 }
@@ -44,8 +44,8 @@
     background: #00AA00 !important
 }
 
-.main ul.group-list li button[aria-labelledby="yellow"] {
-    background: #FFFF55 !important
+.main ul.group-list li button[aria-labelledby="green"] {
+    background: #55FF55 !important
 }
 
 .staff-header {
@@ -80,8 +80,8 @@
     background: #00AA00 !important
 }
 
-.staff-header[aria-labelledby="yellow"] {
-    background: #FFFF55 !important
+.staff-header[aria-labelledby="green"] {
+    background: #55FF55 !important
 }
 
 .staff-list {

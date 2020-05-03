@@ -71,8 +71,10 @@ export default class Home extends Component {
     _load = async () => {
         const result = await api.get(`/punishment?page=${this.state.page}`);
 
+        const punishments = result.data;
+
         this.setState({
-            punishments: result.data
+            punishments
         });
     }
 
@@ -92,7 +94,7 @@ export default class Home extends Component {
 
         const punishments1 = result.data;
 
-        if (punishments1.length === 0) {
+        if (punishments1.length < 10) {
             this.setState({
                 hasMore: false
             });
@@ -268,71 +270,6 @@ export default class Home extends Component {
                                         </InputGroup>
                                     </FormGroup>
                                 </Form>
-                                {/* <Card
-                                    className="mb-4"
-                                >
-                                    <div
-                                        className="h4 text-center"
-                                    >
-                                        Estatísticas
-                                    </div>
-                                    <CardBody
-                                        className="p-4 focus-content"
-                                    >
-                                        <Row style={{
-                                            marginTop: '0'
-                                        }}>
-                                            <Col
-                                                md="10"
-                                                sm="10"
-                                            >
-                                                Total
-                                            </Col>
-                                            <Col
-                                                md="2"
-                                                sm="2"
-                                            >
-                                                0
-                                            </Col>
-                                            <Col
-                                                md="10"
-                                                sm="10"
-                                            >
-                                                Ano
-                                            </Col>
-                                            <Col
-                                                md="2"
-                                                sm="2"
-                                            >
-                                                0
-                                            </Col>
-                                            <Col
-                                                md="10"
-                                                sm="10"
-                                            >
-                                                Mês
-                                            </Col>
-                                            <Col
-                                                md="2"
-                                                sm="2"
-                                            >
-                                                0
-                                            </Col>
-                                            <Col
-                                                md="10"
-                                                sm="10"
-                                            >
-                                                Semana
-                                            </Col>
-                                            <Col
-                                                md="2"
-                                                sm="2"
-                                            >
-                                                0
-                                            </Col>
-                                        </Row>
-                                    </CardBody>
-                                </Card> */}
                             </Col>
                         </Row>
                     </Container>

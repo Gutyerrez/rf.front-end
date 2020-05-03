@@ -39,7 +39,7 @@ export default class Home extends Component {
                                         <i className="fa fa-info"></i>
                                     </div>
                                     <CardBody>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempor blandit est, sed tincidunt sem ultricies eget. Fusce faucibus porta semper. Donec pellentesque, sem quis congue dictum, libero ante hendrerit lectus.
+                                        Aqui você tem total liberdade para pagar como quiser e tem todo suporte necessário para efetuar seus pagamentos e caso tenha algum problema, você pode entrar em contato com nosos suporte através do e-mail <a href="mailto:ajuda@redefocus.com">ajuda@redefocus.com</a>.
                                     </CardBody>
                                 </Card>
                                 <Card>
@@ -47,7 +47,7 @@ export default class Home extends Component {
                                         <i className="fa fa-shield"></i>
                                     </div>
                                     <CardBody>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempor blandit est, sed tincidunt sem ultricies eget. Fusce faucibus porta semper. Donec pellentesque, sem quis congue dictum, libero ante hendrerit lectus.
+                                        Sinta-se seguro para pagar como quiser, aceitamos os meios de pagamento mais populares do mercado, são eles <b>Mercado Pago</b> e <b>PayPal</b>, assim proporcionando a você total segurança em suas compras dentro de nosso servidor.
                                     </CardBody>
                                 </Card>
                                 <Card>
@@ -55,7 +55,7 @@ export default class Home extends Component {
                                         <i className="fa fa-users"></i>
                                     </div>
                                     <CardBody>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempor blandit est, sed tincidunt sem ultricies eget. Fusce faucibus porta semper. Donec pellentesque, sem quis congue dictum, libero ante hendrerit lectus.
+                                        Caso você tenha alguma dúvida, problema e afins ao efetuar sua compra, você pode entrar em contato conosco através do nosso e-mail de ajuda e estaremos sempre disponíveis para ajudá-lo em quaisquer tipos de problemas relacionados a compras.
                                     </CardBody>
                                 </Card>
                             </Col>

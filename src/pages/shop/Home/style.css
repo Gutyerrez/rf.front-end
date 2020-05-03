@@ -9,7 +9,7 @@
     font-size: 30px;
     text-align: center;
     text-shadow: none;
-    margin: -3px 0 0 0;
+    margin: 0 0 0 0;
     border-radius: 25rem;
     border: 3px solid rgba(0, 0, 0, 0.2);
 }
@@ -20,12 +20,18 @@
 
 .benefits .card .card-body {
     background: #151515;
-    padding: 6px 5px 0 45px;
+    padding: 6px 8px 0 45px;
     color: #FFF;
-    height: 90px;
+    height: 92px;
     border-radius: .9rem 0 .9rem 0;
     border: 3px solid rgba(0, 0, 0, 0.2);
     margin: 7px 0 25px 70px
+}
+
+.benefits .card .card-body a,
+.benefits .card .card-body a:hover {
+    color: orangered;
+    text-decoration: none;
 }
 
 .last-purchases {

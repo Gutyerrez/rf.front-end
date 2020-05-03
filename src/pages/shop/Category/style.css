@@ -1,0 +1,26 @@
+.package-category ul {
+  text-align: center;
+}
+
+.package-category ul li {
+  display: inline-block;
+  padding: 0 15px
+}
+
+.package-category ul li button {
+  background-color: orangered;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 25rem;
+  padding: 8px 15px;
+  color: #FFF;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.non-category-selected {
+  background: #FFF;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 15px
+}
